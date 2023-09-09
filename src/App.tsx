@@ -1,13 +1,15 @@
 import './App.css'
+import Header from './components/header/Header'
 
-import LandingPage from './view/LandingPage'
+import GeneralRoutes from './routes/GeneralRoutes'
 
 function App() {
   
   return (
     <>
     <div className="container-fluid">
-     <LandingPage></LandingPage>
+      <Header></Header>
+     <GeneralRoutes></GeneralRoutes>
     </div>
     </>
   )

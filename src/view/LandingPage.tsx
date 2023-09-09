@@ -1,5 +1,5 @@
 import './LandingPage.css'
-import Header from '../components/header/Header'
+
 import Intro from '../components/intro/Intro'
 import Categories from '../components/category/Category'
 import About from '../components/about/About'
@@ -10,7 +10,6 @@ function LandingPage(){
 
     return (
         <>
-        <Header></Header>
         <Intro></Intro>
         <Categories></Categories>
         <About></About>

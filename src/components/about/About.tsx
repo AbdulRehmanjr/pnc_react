@@ -1,5 +1,7 @@
 import './About.css'
 
+import { Link } from 'react-router-dom';
+
 function About() {
   return (
     <>
@@ -15,10 +17,13 @@ function About() {
               consectetur excepturi quos! Magni, omnis!
             </div>
             <div className="m-4 text-center">
+              <Link to="/about-us">
               <button className="btn-about">
                 <i className="fas fa-info-circle px-1"></i>
                 About Us
               </button>
+              </Link>
+              
             </div>
           </div>
         </div>

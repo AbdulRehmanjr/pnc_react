@@ -1,6 +1,8 @@
 import "./Header.css";
 import { useState } from "react";
 
+import { Link } from "react-router-dom";
+
 function Header() {
   const [isLogged, setIsLogged] = useState(false); // Replace with your login state
   const [role, setRole] = useState(""); // Replace with your user role
@@ -185,20 +187,19 @@ function Header() {
               {/* Login and user actions */}
               {!isLogged && (
                 <div className="d-flex m-1">
-                  <button
-                    className="btn btn-success m-1"
-                    onClick={handleLogin}
-                  >
-                    <i className="fa-solid fa-right-to-bracket mx-1"></i>
-                    Login
-                  </button>
-                  <button
-                    className="btn btn-success m-1" /* Handle signup */
-                  >
-                    <i className="fa-solid fa-database mx-1"></i>
-                    Sign up
-                  </button>
-                </div>
+                  <Link to="/login">
+                    <button className="btn btn-success m-1">
+                      <i className="fa-solid fa-right-to-bracket mx-1"></i>
+                      Login
+                    </button>
+                  </Link>
+                
+                <button className="btn btn-success m-1" /* Handle signup */>
+                  <i className="fa-solid fa-database mx-1"></i>
+                  Sign up
+                </button>
+              </div>
+              
               )}
               {isLogged && (
                 <div className="d-flex flex-end gap-2 mt-2">

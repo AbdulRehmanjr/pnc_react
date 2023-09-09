@@ -44,7 +44,7 @@ function Intro() {
 
               <div className="container">
                 <div className="carousel-caption text-start">
-                  <h1>Open Your Door with Ease.</h1>
+                  <h1 className="heading_h1">Open Your Door with Ease.</h1>
                   <p className="opacity-75"></p>
                   <p>
                     <a className="btn btn-lg btn-success fs-5" href="/">
@@ -61,7 +61,7 @@ function Intro() {
               </div>
               <div className="container">
                 <div className="carousel-caption text-start">
-                  <h1>Another example headline.</h1>
+                  <h1 className="heading_h1">Another example headline.</h1>
                   <p>
                     Some representative placeholder content for the second slide
                     of the carousel.
@@ -80,7 +80,7 @@ function Intro() {
               </div>
               <div className="container">
                 <div className="carousel-caption text-start">
-                  <h1>One more for good measure.</h1>
+                  <h1 className="heading_h1">One more for good measure.</h1>
                   <p>
                     Some representative placeholder content for the third slide
                     of this carousel.

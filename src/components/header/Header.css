@@ -12,10 +12,10 @@
 .dropdown-toggle::after {
   content: none;
 }
-.btn {
+/* .btn {
   padding: 8px;
   margin: 2px;
   color: black;
   background-color: ghostwhite;
   border-color: black;
-}
+} */

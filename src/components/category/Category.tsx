@@ -31,15 +31,16 @@ function Categories() {
         <div className="row">
           {categories.map((category: Category) => (
             <div className="col-md-3 my-2" key={category.categoryId}>
-              <a className="card-custom" href="#">
-                <div className="bg">
+              <a className="card-custom link" href="#">
+                <div className="category_bg">
                   <div className="text-center d-flex flex-column m-auto p-3">
                     <img
+                    className="category_img"
                       src={category.picture}
                       alt={category.categoryName}
                       style={{ border: "none", borderRadius: "50%" }}
                     />
-                    <br /> <p className="title">{category.categoryName}</p>
+                    <br /> <p className="category_title">{category.categoryName}</p>
                   </div>
                 </div>
                 <div className="blob"></div>
