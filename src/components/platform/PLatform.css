@@ -1,0 +1,47 @@
+.platform_sec-title{
+    text-transform: uppercase;
+    font-size:1.8rem;
+    font-style: normal;
+    font-weight: bold;
+    color: #198754;
+  }
+  
+  
+  .platform_brief-para{
+    font-size: 1.5rem;
+    color: #000;
+  }
+  .btn-platform{
+    width: 200px;
+    height: 50px;
+    color:#fff;
+    font-size:1.4rem;
+    font-weight: 700;
+    background-color: #198754;
+    border:none;
+    outline: none;
+    border-radius: 10px;
+    box-shadow: 6px 6px 5px rgba(14, 224, 7, 0.5);
+  }
+  .btn-platform:hover{
+    background-color: #fff;
+    color: #198754;
+    border: 1px solid #198754;
+  }
+  .platform-img{
+    width: 100%;
+    height: 100%;
+  }
+  
+  .platform_list{
+    list-style: none;
+  }
+  
+  .devices_icon{
+    color:#198754;
+  }
+  .platform_dev_item{
+    font-size:1.4rem;
+    font-style: normal;
+    font-weight: bold;
+  }

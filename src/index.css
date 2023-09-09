@@ -1,0 +1,23 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.container-fluid{
+    --bs-gutter-x: 0 !important;
+    --bs-gutter-y: 0;
+}
+.row {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+.underline_pri-title{
+  text-transform: uppercase;
+  font-size:1.3rem;
+  font-style: normal;
+  font-weight: bold;
+  color:#000;
+  text-decoration: underline;
+  text-decoration-color: #198754;
+  text-decoration-thickness: 5px;
+}
