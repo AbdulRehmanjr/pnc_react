@@ -187,19 +187,17 @@ function Header() {
               {/* Login and user actions */}
               {!isLogged && (
                 <div className="d-flex m-1">
-                  <Link to="/login">
-                    <button className="btn btn-success m-1">
-                      <i className="fa-solid fa-right-to-bracket mx-1"></i>
-                      Login
-                    </button>
-                  </Link>
                 
-                <button className="btn btn-success m-1" /* Handle signup */>
-                  <i className="fa-solid fa-database mx-1"></i>
-                  Sign up
-                </button>
-              </div>
-              
+                  <Link to="/login" className="btn btn-success m-1" /* Handle signup */>
+                  <i className="fa-solid fa-right-to-bracket mx-1"></i>
+                    Login
+                  </Link>
+                  <Link to="/signup" className="btn btn-success m-1">
+                   
+                    <i className="fa-solid fa-database mx-1"></i>
+                    Sign up
+                  </Link>
+                </div>
               )}
               {isLogged && (
                 <div className="d-flex flex-end gap-2 mt-2">

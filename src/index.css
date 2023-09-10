@@ -21,3 +21,9 @@ body{
   text-decoration-color: #198754;
   text-decoration-thickness: 5px;
 }
+.text_green{
+  color:#198754;
+}
+.bg_green{
+  background-color: #198754;
+}

@@ -1,36 +1,41 @@
-import { BrowserRouter, Route,Routes } from 'react-router-dom';
+import { Route,Routes } from 'react-router-dom';
 import LandingPage from '../view/LandingPage';
 import AboutDetail from '../components/about/AboutDetail';
+import Signup from '../components/login/Signup';
 import Login from '../components/login/Login';
 
 
 const routes = [
     {
       path: '/',
-      component: <LandingPage></LandingPage>,
+      component: LandingPage,
     },
     {
       path:'/about-us',
-      component: <AboutDetail></AboutDetail>
+      component: AboutDetail
+    },
+    {
+      path:'/signup',
+      component: Signup
     },
     {
       path:'/login',
-      component: <Login></Login>
+      component:Login
     }
   ];
 function GeneralRoutes() {
     return (
-      <BrowserRouter>
+      
         <Routes>
           {routes.map((route, index) => (
             <Route
               key={index}
               path={route.path}
-              element={route.component}
+              element={<route.component />}
             />
           ))}
         </Routes>
-      </BrowserRouter>
+      
     );
   }
   

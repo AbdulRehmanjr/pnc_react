@@ -1,0 +1,7 @@
+.login_bg_color{
+    background-color: rgb(197, 205, 211);
+    height: calc(100vh - 60px);
+}
+.login_icon{
+    color:#198754;
+}

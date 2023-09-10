@@ -18,12 +18,12 @@ function About() {
             </div>
             <div className="m-4 text-center">
               <Link to="/about-us">
-              <button className="btn-about">
-                <i className="fas fa-info-circle px-1"></i>
-                About Us
-              </button>
+                <button className="btn-about">
+                  <i className="fas fa-info-circle px-1"></i>
+                  About Us
+                </button>
               </Link>
-              
+
             </div>
           </div>
         </div>
