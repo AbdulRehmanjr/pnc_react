@@ -1,7 +1,9 @@
 
+.heading{
+  font-family: 'Cyborg';
+}
 .category_title{
-  font-family: 'Lora', serif;
-  font-size:22px;
+  font-family: 'Cyborg';
   font-weight: 500;
   color: #000000;
 }
@@ -19,7 +21,7 @@
 }
 
 /* CARD  */
-.card-custom {
+.card_custom {
   position: relative;
   width: 200px;
   height: 200px;

@@ -4,6 +4,7 @@ import App from './App.tsx'
 
 // styles
 import './index.css'
+import './fonts/fonts.css'
 // import "bootstrap/dist/css/bootstrap.min.css";
 // import "bootstrap/dist/js/bootstrap.min.js";
 import '@fontsource/roboto/500.css';

@@ -2,101 +2,19 @@ import './Intro.css'
 
 function Intro() {
   return (
-    <>
-      <section className="height_full">
-        <div
-          id="myCarousel"
-          className="carousel slide mb-6"
-          data-bs-ride="carousel"
-          data-bs-theme="light"
-          data-bs-interval="2000"
-          data-bs-wrap="true"
-        >
-          <div className="carousel-indicators d-flex flex-column">
-            <button
-              type="button"
-              data-bs-target="#myCarousel"
-              data-bs-slide-to="0"
-              className=""
-              aria-label="Slide 1"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#myCarousel"
-              data-bs-slide-to="1"
-              aria-label="Slide 2"
-              className=""
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#myCarousel"
-              data-bs-slide-to="2"
-              aria-label="Slide 3"
-              className="active"
-              aria-current="true"
-            ></button>
-          </div>
-          <div className="carousel-inner height_full">
-            <div className="carousel-item">
-              <div className="carousel-background">
-                <img src="src/assets/intro/house.jpg" alt="house img" />
-              </div>
-
-              <div className="container">
-                <div className="carousel-caption text-start">
-                  <h1 className="heading_h1">Open Your Door with Ease.</h1>
-                  <p className="opacity-75"></p>
-                  <p>
-                    <a className="btn btn-lg btn-success fs-5" href="/">
-                    <i className="fa-brands fa-golang mx-1"></i>
-                      Sign up today
-                    </a>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="carousel-item">
-              <div className="carousel-background">
-                <img src="src/assets/intro/bath.jpg" alt="bath img" />
-              </div>
-              <div className="container">
-                <div className="carousel-caption text-start">
-                  <h1 className="heading_h1">Another example headline.</h1>
-                  <p>
-                    Some representative placeholder content for the second slide
-                    of the carousel.
-                  </p>
-                  <p>
-                    <a className="btn btn-lg btn-success" href="/">
-                      Learn more
-                    </a>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="carousel-item active">
-              <div className="carousel-background">
-                <img src="src/assets/intro/door.jpg" alt="door img" />
-              </div>
-              <div className="container">
-                <div className="carousel-caption text-start">
-                  <h1 className="heading_h1">One more for good measure.</h1>
-                  <p>
-                    Some representative placeholder content for the third slide
-                    of this carousel.
-                  </p>
-                  <p>
-                    <a className="btn btn-lg btn-success" href="/">
-                      Browse gallery
-                    </a>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+    
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:h-screen h-full">
+        <div className="px-5 py-9">
+          <h1 className="text-green-600 p-2 text-3xl md:text-6xl font-bold intro_headhing_primary">Business365 <br /><span className='text-2xl md:text-3xl p-2 underline_pri-title'> Where Local Meets Global</span></h1>
+          <p className="text-black text-lg md:text-2xl mt-4 text-left leading-normal">
+            Discover a world of possibilities with Business365! Our all-in-one platform seamlessly connects local businesses with the global marketplace and empowers you to explore, shop, and socialize like never before. Whether you're looking for your favorite local stores, unique e-commerce finds, or a vibrant social community, Business365 has you covered. Join us today and experience a new way to do business, 365 days a year!
+          </p>
         </div>
-      </section>
-    </>
+        <div className="hidden md:block p-6">
+          <img src="src/assets/intro/intro.png" alt="intro" />
+        </div>
+      </div>
+
   );
 }
 

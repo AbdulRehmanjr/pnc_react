@@ -7,11 +7,9 @@ import GeneralRoutes from './routes/GeneralRoutes'
 function App() {
 
   return (
-    <BrowserRouter>
-    <div className="w-screen">
-    <Header />
-        {/* <GeneralRoutes /> */}
-    </div>
+    <BrowserRouter>      
+        <Header />
+        <GeneralRoutes />
     </BrowserRouter>
   )
 

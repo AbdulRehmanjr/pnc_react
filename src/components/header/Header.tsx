@@ -57,8 +57,8 @@ function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="bg-grey-700">
-      <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+    <header className="bg-gray-200">
+      <nav className="flex items-center justify-between p-5 lg:px-7" aria-label="Global">
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
