@@ -22,7 +22,7 @@ function About() {
             </div>
         </div>
         <div className="hidden md:block">
-          <img className="drop-shadow-lg" src="src/assets/intro/about.png" alt="about" />
+          <img className="" src="src/assets/intro/about.png" alt="about" />
         </div>
       </section>
     </>

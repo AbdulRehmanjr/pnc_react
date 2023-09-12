@@ -1,7 +1,4 @@
-
-import './AboutDetail.css'
-
-
+import style from './AboutDetail.module.css'
 function AboutDetail() {
 
     const cards = [
@@ -13,18 +10,18 @@ function AboutDetail() {
 
     return (
         <section id="about-us">
-            <div className="row bg_detail">
-                <div className="col-7 offset-3 d-flex justify-content-center align-items-center">
-                    <p className="detail_title">PNC CONNECT PEOPLE WITH LOCAL BUSINESS</p>
+            <div className={`grid grid-cols-1 ${style.bg_detail}`}>
+                <div className="flex justify-center items-center">
+                    <p className="text-white font-['Cyborg']  text-xl md:text-4xl underline underline-offset-8 decoration-8 decoration-green-600 leading-loose brightness-100">PNC CONNECT PEOPLE WITH LOCAL BUSINESS</p>
                 </div>
             </div>
-            <div className="row m-5 p-5">
+            <div className="grid grid-cols-4 gap-4 m-10">
                 {
                     cards.map((card) => (
-                        <div className="col-md-3" key={card.id}>
-                            <div className="card detail_card">
-                                <img className="detail_card-img" src={card.image} alt={card.name} />
-                                <p className="detail_card-title text-center">{card.name }</p>
+                        <div className="" key={card.id}>
+                            <div className={`card ${style.detail_card}`}>
+                                <img className={`${style.detail_card_img}`} src={card.image} alt={card.name} />
+                                <p className={`${style.detail_card_title} text-center`}>{card.name }</p>
                                 <p className="text-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia qui eveniet porro odio.</p>
                             </div>
                         </div>

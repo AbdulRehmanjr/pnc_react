@@ -28,7 +28,7 @@ function Platform() {
         </div>
       </div>
       <div className="hidden md:block">
-        <img className="drop-shadow-lg" src="src/assets/intro/devices.png"
+        <img className="" src="src/assets/intro/devices.png"
           alt="platform image" />
       </div>
     </section>
