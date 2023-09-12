@@ -7,30 +7,30 @@ function Categories() {
     {
       categoryId: 1,
       categoryName: "AutoMobile",
-      picture: "src/assets/category/AutoMobile.png",
+      picture: "src/assets/category/AutoMobile1.png",
     },
     {
       categoryId: 2,
       categoryName: "Home Service",
-      picture: "src/assets/category/HomeServices.png",
+      picture: "src/assets/category/HomeServices1.png",
     },
     {
       categoryId: 3,
       categoryName: "Resturant",
-      picture: "src/assets/category/Restaurant.png",
+      picture: "src/assets/category/Restaurant1.png",
     },
   ];
   return (
     <>
-      <section id="cards" className="mt-3">
-        <div className="grid grid-cols-1 mb-7">
+      <section id="cards" className="my-4">
+        <div className="grid grid-cols-1 mb-14">
           <div className="col-span-1">
-            <h1 className={`text-3xl md:text5xl text-center ${style.heading}`}>Categories</h1>
+            <h1 className={`text-3xl md:text5xl text-center ${style.heading} underline decoration-green-600 underline-offset-8 `}>Categories</h1>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-12">
+        <div className="grid grid-cols-1 md:grid-cols-4">
           {categories.map((category: Category) => (
-            <div className="col-span-12 md:col-span-3 my-2 mx-20 md:mx-4" key={category.categoryId}>
+            <div className="my-2 mx-20 md:mx-4" key={category.categoryId}>
               <a className={`${style.card_custom} ${style.link}`} href="#">
                 <div className={`${style.category_bg}`}>
                   <div className="text-center d-flex flex-column m-auto p-3">
