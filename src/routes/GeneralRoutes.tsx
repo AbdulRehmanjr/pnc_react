@@ -1,9 +1,10 @@
 import { Route,Routes } from 'react-router-dom';
-import LandingPage from '../view/LandingPage';
+import LandingPage from '../page/LandingPage';
 import AboutDetail from '../components/about/AboutDetail';
 import Signup from '../components/login/Signup';
 import Login from '../components/login/Login';
 import ContactUs from '../components/team/Contactus';
+import BecomeSeller from '../components/seller/BecomeSeller';
 
 
 const routes = [
@@ -22,6 +23,10 @@ const routes = [
     {
       path:'/login',
       component:Login
+    },
+    {
+      path: '/become-seller',
+      component: BecomeSeller
     },
     {
       path:'contact-us',
