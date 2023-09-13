@@ -3,6 +3,7 @@ import LandingPage from '../view/LandingPage';
 import AboutDetail from '../components/about/AboutDetail';
 import Signup from '../components/login/Signup';
 import Login from '../components/login/Login';
+import ContactUs from '../components/team/Contactus';
 
 
 const routes = [
@@ -21,6 +22,10 @@ const routes = [
     {
       path:'/login',
       component:Login
+    },
+    {
+      path:'contact-us',
+      component:ContactUs
     }
   ];
 function GeneralRoutes() {

@@ -1,6 +1,6 @@
 # Business365 Yelp-Like Project - MERN
 
-![Business365 Yelp-Like Project](pn1.png)
+![Business365 Yelp-Like Project](pic1.png)
 
 Welcome to the Business365 Yelp-Like Project! This React application aims to replicate the functionality of Yelp.com, allowing users to search for and review various businesses, restaurants, and services. This README.md provides an overview of the project, its features, and instructions for getting started.
 

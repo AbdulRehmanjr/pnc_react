@@ -12,7 +12,7 @@ function Team() {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem dicta facere ipsa minus sed consequatur iusto sint excepturi, officia architecto aut debitis, beatae tenetur impedit similique quibusdam aliquam, velit hic tempora provident! Totam dolorum recusandae placeat officia? Quas animi dignissimos exercitationem aspernatur dolor atque ut id saepe iusto deleniti nobis rem ullam quia fugit suscipit blanditiis est sint qui ipsa nesciunt, quasi soluta nisi? Beatae fuga suscipit modi recusandae quia?
           </p>
           <div className="m-4 text-center">
-            <Link to="/about-us">
+            <Link to="/contact-us">
               <button className={`${style.btn_team}`}>
                 <i className="fa-regular fa-paper-plane px-1"></i>
                 Contact Us
