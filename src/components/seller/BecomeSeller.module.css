@@ -22,14 +22,12 @@
   .ul .li {
     position: relative;
     padding-left: 20px;
-    font-size:25px;
   }
   .li::before {
     content: "✔"; /* The checkmark symbol (✔) */
     position: absolute;
     left: 0;
     color: green; /* Color of the checkmark */
-    font-size: 25px; /* Adjust the size of the checkmark as needed */
   }
 
   
@@ -39,6 +37,7 @@
   padding: 10px;
   margin: 10px;
   border-color: #ebebeb;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
 }
 .card_img{
   height: 200px;

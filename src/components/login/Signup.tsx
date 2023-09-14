@@ -1,6 +1,3 @@
-
-import style from './Signup.module.css'
-
 import { FieldValues, useForm } from 'react-hook-form';
 import { useState } from 'react';
 import Visibility from '@mui/icons-material/Visibility';
@@ -35,7 +32,7 @@ function Signup() {
 
     return (
 
-        <section className="bg-gray-300 h-full">
+        <section className="bg-gray-300 h-screen">
             <div className="py-[19.6px] md:px-5 text-center">
                 <div className="container">
                     <div className="grid grid-cols-2 items-center">

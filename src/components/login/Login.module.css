@@ -5,13 +5,3 @@
     height: 1px;
     background: #000000;
 }
-
-.h_custom {
-    height: calc(100vh - 72px);
-}
-
-@media (max-width: 450px) {
-    .h_custom {
-        height: 100%;
-    }
-}

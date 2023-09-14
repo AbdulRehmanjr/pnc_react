@@ -6,11 +6,15 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import { FormControl, InputLabel, FilledInput, InputAdornment, IconButton } from '@mui/material';
 import { FieldValues, useForm } from 'react-hook-form';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import LoginService from '../../services/LoginService';
+
 
 
 function Login() {
+
+  const loginService = new LoginService()
 
   const { handleSubmit, register, formState: { errors } } = useForm();
 
@@ -21,14 +25,21 @@ function Login() {
   const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
   };
-
+  const naviate = useNavigate();
   const onSubmit = (data: FieldValues) => {
 
-
+    loginService.loginUser(data)
+      .then(response => response.json())
+      .then(data => {
+        console.log('redirection')
+        loginService.setToken(data)
+        naviate('/')
+      })
+      .catch(error => console.error(error))
   };
   return (
     <section className={`grid grid-cols-2`}>
-      <div className={`hidden md:block col-span-1 ${style.h_custom}`}>
+      <div className={`hidden md:block col-span-1 h-screen`}>
         <img src="src/assets/map.jpeg"
           className="h-5/6" alt="Sample image" />
       </div>

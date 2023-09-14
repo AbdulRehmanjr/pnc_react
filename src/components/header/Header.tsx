@@ -1,5 +1,5 @@
 import "./Header.css";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react'
@@ -21,6 +21,11 @@ function Header() {
   const [cartCount, setCartCount] = useState(0); // Replace with your cart count state
   const [user, setUser] = useState({}); // Replace with your user data
 
+  useEffect(() => {
+    const token = localStorage.getItem('token_pnc')
+    if(token)
+      setIsLogged(true)
+  }, []);
   // Function to handle the login state
   const handleLogin = () => {
     // Implement your login logic here
@@ -30,13 +35,11 @@ function Header() {
     setRole("ADMIN"); // Example role for testing, replace with actual user role
   };
 
-  // Function to handle logout
+  
   const handleLogout = () => {
-    // Implement your logout logic here
+  
     setIsLogged(false);
-    // Clear user data
-    setUser({});
-    setRole("");
+    localStorage.removeItem('token_pnc')
   };
   const products = [
     { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
@@ -136,11 +139,20 @@ function Header() {
           <Link to="/become-seller" className="text-sm font-semibold leading-6 text-gray-900">
             Become a Seller
           </Link>
+          <Link to="/admin-dashboard" className="text-sm font-semibold leading-6 text-gray-900"> 
+            Dashboard
+          </Link>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link to="/login" className="text-sm font-semibold leading-6 text-gray-900">
-            Log in <span aria-hidden="true">&rarr;</span>
-          </Link>
+          {isLogged ? (
+            <button onClick={handleLogout} className="text-sm font-semibold leading-6 text-gray-900">
+              Log Out <i className="fa-solid fa-right-from-bracket"></i>
+            </button>
+          ) : (
+            <Link to="/login" className="text-sm font-semibold leading-6 text-gray-900">
+             <i className="fa-solid fa-right-to-bracket"></i> Log In
+            </Link>
+          )}
         </div>
       </nav>
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>

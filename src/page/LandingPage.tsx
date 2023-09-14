@@ -7,6 +7,7 @@ import Team from '../components/team/Team'
 import Platform from '../components/platform/Platform'
 import TopSellers from '../components/seller/TopSellers'
 
+
 function LandingPage(){
 
     return (
