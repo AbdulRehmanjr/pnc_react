@@ -1,4 +1,4 @@
-import { Route,Routes, useLocation } from 'react-router-dom';
+import { Route,Routes, useLocation} from 'react-router-dom';
 import LandingPage from '../page/LandingPage';
 import AboutDetail from '../components/about/AboutDetail';
 import ContactUs from '../components/team/Contactus';
@@ -25,7 +25,7 @@ const routes = [
       component: BecomeSeller
     },
     {
-      path:'/admin-dashboard',
+      path:'/admin-dashboard/*',
       component:AdminDashboard
     },
     {
