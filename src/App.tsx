@@ -5,9 +5,11 @@ import GeneralRoutes from './routes/GeneralRoutes'
 function App() {
 
   return (
-    <BrowserRouter>      
-        <GeneralRoutes />
+
+    <BrowserRouter>
+      <GeneralRoutes />
     </BrowserRouter>
+
   )
 
 }

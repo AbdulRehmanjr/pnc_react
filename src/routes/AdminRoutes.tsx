@@ -1,5 +1,6 @@
 import { Route,Routes} from 'react-router-dom';
 import HomePage from '../components/admin/HomePage';
+import SellerRequests from '../components/admin/SellerRequest';
 
 
 function AdminRoutes() {
@@ -9,6 +10,10 @@ function AdminRoutes() {
           path: '/',
           component: HomePage,
         },
+        {
+          path:'/seller-request',
+          component:SellerRequests
+        }
 
       ];
     
