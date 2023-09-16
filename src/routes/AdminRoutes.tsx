@@ -1,11 +1,15 @@
 import { Route,Routes} from 'react-router-dom';
 import HomePage from '../components/admin/HomePage';
 import SellerRequests from '../components/admin/SellerRequest';
+import Categories from '../components/admin/Category';
 
+interface IRoutes{
+  path:string
+  component: () => JSX.Element
+}
+const  AdminRoutes = ()=> {
 
-function AdminRoutes() {
-
-    const routes = [
+    const routes :IRoutes[] = [
         {
           path: '/',
           component: HomePage,
@@ -13,6 +17,10 @@ function AdminRoutes() {
         {
           path:'/seller-request',
           component:SellerRequests
+        },
+        {
+          path:'category',
+          component:Categories
         }
 
       ];
