@@ -6,7 +6,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import { FormControl, InputLabel, FilledInput, InputAdornment, IconButton } from '@mui/material';
 import { FieldValues, useForm } from 'react-hook-form';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import LoginService from '../../services/LoginService';
 

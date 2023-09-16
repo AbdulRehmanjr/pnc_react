@@ -3,8 +3,15 @@ import { DataTable } from "primereact/datatable"
 import { InputText } from "primereact/inputtext"
 import { Toolbar } from "primereact/toolbar"
 import { useEffect, useRef, useState } from "react"
-import { useForm } from "react-hook-form"
+import { FieldValues, useForm } from "react-hook-form"
 import { debounce } from 'lodash';
+import { Dialog } from "primereact/dialog"
+import { classNames } from "primereact/utils"
+import { addCategory } from "../../services/CategoryService"
+
+import { Toast } from 'primereact/toast';
+
+
 
 const Categories = () => {
 
@@ -12,8 +19,14 @@ const Categories = () => {
     const [selectedCategory, setSelectedCategory] = useState<Category>(null)
     const [globalFilter, setGlobalFilter] = useState(null);
     const [selectedProducts, setSelectedProducts] = useState(null);
+    const [categoryDialog, setCategoryDialog] = useState<boolean>(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const [file, setFile] = useState<File>(null);
+    const { register, reset, handleSubmit, formState: { errors } } = useForm();
 
     const dt = useRef(null)
+    const toast = useRef(null);
 
     const debouncedSetGlobalFilter = debounce((value) => {
         setGlobalFilter(value);
@@ -43,14 +56,12 @@ const Categories = () => {
         dt.current.exportCSV(options);
     };
     const openNew = () => {
-        // setProduct(emptyProduct);
-        // setSubmitted(false);
-        // setProductDialog(true);
+        setCategoryDialog(true);
     };
 
     const hideDialog = () => {
-        // setSubmitted(false);
-        // setProductDialog(false);
+        reset();
+        setCategoryDialog(false)
     };
 
 
@@ -62,7 +73,7 @@ const Categories = () => {
         //  setDeleteProductsDialog(true);
     };
 
-    
+
     const header = (
         <InputText type="search" onInput={(e) => debouncedSetGlobalFilter(e.target['value'])} placeholder="Search..." />
     );
@@ -89,12 +100,32 @@ const Categories = () => {
 
         return <img src={`${rowData.image}`} alt={rowData.image} className="rounded-md drop-shadow-lg" style={{ width: '44px' }} />;
     }
+
+    //* send data to backend 
+    const newFormHandler = (data: FieldValues) => {
+
+        setIsSubmitting(true);
+        addCategory(data.name, file)
+            .then(
+                response => toast.current.show({ severity: 'success', summary: 'Success', detail: 'Message Content', life: 3000 })
+            )
+            .catch(error => toast.current.show({ severity: 'error', summary: 'error', detail: 'Message Content', life: 3000 }))
+            .finally(() => setIsSubmitting(false))
+    }
+
+    //* file selected 
+    const fileSelected = (e: any) => {
+        setFile(e.target['files'][0])
+    }
+
+
     return (
         <section className="grid grid-cols-12">
             <div className="col-span-12 mb-4">
                 <h1 className="text-xl md:text-3xl font-serif font-bold">Category Management</h1>
             </div>
             <div className="col-span-12 mx-auto">
+                <Toast ref={toast} />
                 <Toolbar className="mb-4 bg-[#22C55E] rounded-lg" start={leftToolbarTemplate} end={rightToolbarTemplate}></Toolbar>
                 <DataTable ref={dt} value={categories} selection={selectedCategory} onSelectionChange={(e) => setSelectedCategory(e.value)}
                     dataKey="id" paginator rows={5} rowsPerPageOptions={[5, 10, 15]}
@@ -106,8 +137,42 @@ const Categories = () => {
                     <Column field="image" header="Image" body={imageTemplate}></Column>
 
                 </DataTable>
-            </div>
-        </section>
+
+                //* Add New Category
+                <Dialog visible={categoryDialog} style={{ width: '32rem' }} breakpoints={{ '960px': '75vw', '641px': '90vw' }} header="Category Detail" modal onHide={hideDialog}>
+                    <form className="flex flex-col bg-slate-300 rounded-lg" onSubmit={handleSubmit(newFormHandler)}>
+                        <div className="name_section mx-auto py-10">
+
+                            <label htmlFor="categoryName" className={classNames({ 'p-error': errors.value })}></label>
+                            <span className="p-float-label text-md font-bold font-serif">
+                                <InputText  {...register('name', {
+                                    required: 'CategoryName is required',
+                                })} />
+                                <label htmlFor="categoryName">Category Name</label>
+                            </span>
+                            {errors?.name && <p className="error-message">{errors.name?.message?.toString()}</p>}
+                        </div>
+
+                        <div className="image_section mx-auto py-5">
+                            <label htmlFor="categoryImage" className="font-bold font-serif">Category Image</label>
+                            <span className="p-float-label text-md font-bold font-serif">
+                                <InputText className="bg-white" {...register('file', {
+                                    required: 'File is required',
+                                })} type="file" accept="image/*" onChange={fileSelected} />
+
+                            </span>
+                            {errors?.file && <p className="error-message">{errors.file?.message?.toString()}</p>}
+                        </div>
+                        <div className="text-center text-lg-start mt-4 pt-2">
+                            <button type="submit" className="text-green-600 text-xl bg-white drop-shadow-md font-bold  rounded-lg p-4 my-5" disabled={isSubmitting}>
+                                {isSubmitting ? 'Adding...' : 'Add'}
+                            </button>
+                        </div>
+                    </form>
+                </Dialog >
+
+            </div >
+        </section >
     )
 }
 
