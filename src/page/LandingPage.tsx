@@ -1,4 +1,3 @@
-import './LandingPage.css'
 
 import Intro from '../components/intro/Intro'
 import Categories from '../components/category/Category'

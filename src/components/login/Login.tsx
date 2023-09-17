@@ -40,7 +40,7 @@ function Login() {
   return (
     <section className={`grid grid-cols-2`}>
       <div className={`hidden md:block col-span-1 h-screen`}>
-        <img src="src/assets/map.jpeg"
+        <img src="/map.jpeg"
           className="h-5/6" alt="Sample image" />
       </div>
       <div className="col-span-1 p-4 m-6">

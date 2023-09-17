@@ -21,7 +21,7 @@ function Team() {
           </div>
         </div>
         <div className="hidden md:block">
-          <img className="mt-20" src="src/assets/intro/contact.png"
+          <img className="mt-20" src="/intro/contact.png"
             alt="team picture" />
         </div>
       </section>

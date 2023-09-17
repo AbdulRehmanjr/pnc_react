@@ -7,7 +7,7 @@ import { FieldValues, useForm } from "react-hook-form"
 import { debounce } from 'lodash';
 import { Dialog } from "primereact/dialog"
 import { classNames } from "primereact/utils"
-import { addCategory, getAllCategories } from "../../services/CategoryService"
+import { addCategory, deleteCategories, getAllCategories } from "../../services/CategoryService"
 
 import { Toast } from 'primereact/toast';
 import { AxiosError } from "axios"
@@ -40,15 +40,28 @@ const Categories = () => {
                 summary: 'Info',
                 detail: `${error.message}`
             }))
-
     }, [])
 
-    const openNew = () => {
-        setCategoryDialog(true);
-    };
 
+    //* delete categories by id => separate ids and then send to backend
     const deleteSelectedCategories = () => {
-        console.log(selectedCategories)
+        
+        const ids:string[]= selectedCategories.map(category => category._id)
+
+        deleteCategories(ids)
+        .then(response => toast.current.show({
+            severity: 'success',
+            summary: 'Success',
+            detail: `${response['data']['message']}`,
+            life: 2000
+        }))
+        .catch((error: AxiosError) => toast.current.show({
+            severity: 'error',
+            summary: 'Error',
+            detail: `${error.response.data['error']}`,
+            life: 2000
+        }))
+        .finally(()=> setDeleteDialog(false))
     }
 
     const deleteDialogFooter = (
@@ -57,7 +70,7 @@ const Categories = () => {
                 Delete
             </button>
             <button onClick={() => setDeleteDialog(false)}>
-                cancel
+                Cancel
             </button>
         </>
     );
@@ -69,7 +82,7 @@ const Categories = () => {
     const leftToolbarTemplate = () => {
         return (
             <div className="flex flex-wrap gap-2">
-                <button className="text-sm font-serif font-bold bg-white  rounded-md text-green-500 h-10 px-4" onClick={openNew}><i className="fa-solid fa-plus px-2"></i>New</button>
+                <button className="text-sm font-serif font-bold bg-white  rounded-md text-green-500 h-10 px-4" onClick={()=> setCategoryDialog(true) }><i className="fa-solid fa-plus px-2"></i>New</button>
                 <button className="text-sm font-serif font-bold text-white bg-red-600  rounded-md disabled:bg-red-400 h-10 px-4" onClick={() => setDeleteDialog(true)} disabled={!selectedCategories || !selectedCategories.length}><i className="fa-solid fa-trash px-2" ></i>Delete</button>
             </div>
         );
@@ -106,7 +119,10 @@ const Categories = () => {
                 detail: `${error.response.data['error']}`,
                 life: 2000
             }))
-            .finally(() => setIsSubmitting(false))
+            .finally(() => {
+                setIsSubmitting(false)
+                setCategoryDialog(false)
+            })
 
     }
 

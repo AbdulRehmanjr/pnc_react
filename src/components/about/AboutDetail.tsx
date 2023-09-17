@@ -2,10 +2,10 @@ import style from './AboutDetail.module.css'
 function AboutDetail() {
 
     const cards = [
-        { id: 1,image: 'src/assets/about/career.svg', name: 'career' },
-        { id:2, image: 'src/assets/about/newsroom.svg', name: 'Newsroom' },
-        { id:3, image: 'src/assets/about/press.svg', name: 'Investor Relation' },
-        { id:4, image: 'src/assets/about/advertiser.svg', name: 'Trust & Safety' }
+        { id: 1,image: '/about/career.svg', name: 'career' },
+        { id:2, image: '/about/newsroom.svg', name: 'Newsroom' },
+        { id:3, image: '/about/press.svg', name: 'Investor Relation' },
+        { id:4, image: '/about/advertiser.svg', name: 'Trust & Safety' }
     ]
 
     return (

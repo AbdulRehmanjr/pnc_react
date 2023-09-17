@@ -9,6 +9,7 @@ import Signup from '../components/login/Signup';
 import { useState, useEffect } from 'react';
 import SellerRequestForm from '../components/seller/SellerRequestForm';
 import AdminDashboard from '../page/AdminDashboard';
+import ShopPage from '../page/ShopPage';
 
 
 const routes = [
@@ -27,6 +28,10 @@ const routes = [
     {
       path:'/admin-dashboard/*',
       component:AdminDashboard
+    },
+    {
+      path:'/shop',
+      component: ShopPage
     },
     {
       path:'/contact-us',

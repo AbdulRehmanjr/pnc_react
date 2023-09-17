@@ -2,7 +2,8 @@
 import { API } from "../api/api";
 import axois from 'axios'
 
-const url:string = `${API.baseUrl}/${API.category}`
+
+const url: string = `${API.baseUrl}/${API.category}`
 
 
 /**
@@ -20,7 +21,7 @@ export const addCategory = (name: string, image: File): Promise<Response> => {
     formData.append('name', name)
     formData.append('image', image)
 
-    return axois.post(`${url}/save`,formData)
+    return axois.post(`${url}/save`, formData)
 }
 
 /**
@@ -28,7 +29,12 @@ export const addCategory = (name: string, image: File): Promise<Response> => {
  * specified URL.
  * @returns a Promise that resolves to a Response object.
  */
-export const getAllCategories = () :Promise<Response> => {
+export const getAllCategories = (): Promise<Response> => {
 
     return axois.get(`${url}/all`)
+}
+
+export const deleteCategories = (catIds: string[]): Promise<Response> => {
+
+    return axois.delete(`${url}/delete/${catIds}`,)
 }

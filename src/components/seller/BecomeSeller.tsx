@@ -123,7 +123,7 @@ const BecomeSeller = () => {
           <a href="/home/about-us" className={`${style.card} col-span-2 md:col-span-1 mx-auto`}>
             <img
               className={`${style.card_img}`}
-              src="src/assets/business/sellers.png"
+              src="/business/sellers.png"
               alt="sellers"
             />
             <p className={`${style.card_title} text-center`}>1000+ Sellers</p>
@@ -135,7 +135,7 @@ const BecomeSeller = () => {
           <a href="/home/about-us" className={`${style.card} col-span-2 md:col-span-1 mx-auto`}>
             <img
               className={`${style.card_img}`}
-              src="src/assets/business/users.png"
+              src="/business/users.png"
               alt="sellers"
             />
             <p className={`${style.card_title} text-center`}>80% Users</p>
