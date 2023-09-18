@@ -30,7 +30,7 @@ const routes = [
       component:AdminDashboard
     },
     {
-      path:'/shop',
+      path:'/shop/*',
       component: ShopPage
     },
     {

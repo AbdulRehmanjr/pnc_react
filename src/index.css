@@ -42,3 +42,12 @@ body{
 .p-carousel-items-container{
   transform: translate3d(-100%, 0px, 0px) !important;
 }
+
+.p-rating .p-rating-item.p-rating-item-active .p-rating-icon{
+  color:#FFA726;
+}
+
+.p-rating .p-rating-item.p-rating-item-active .p-rating-icon{
+  width: 1rem;
+  height: 1rem;
+}

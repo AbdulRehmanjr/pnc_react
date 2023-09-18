@@ -1,7 +1,6 @@
 import axios from "axios";
 import { API } from "../api/api";
 
-
 const url:string = `${API.baseUrl}/${API.product}`
 
 
@@ -12,4 +11,15 @@ const url:string = `${API.baseUrl}/${API.product}`
 export const  getAllProducts = (page:number,itemsPerPage:number) :Promise<Response> =>{
 
     return axios.get(`${url}/all?page=${page}&itemsPerPage=${itemsPerPage}`)
+}
+
+/**
+ * The function `getProductById` takes a `productId` as input and returns a promise that resolves to a
+ * `Response` object.
+ * @param {string} productId - The `productId` parameter is a string that represents the unique
+ * identifier of a product.
+ * @returns a Promise that resolves to a Response object.
+ */
+export const getProductById = (productId:string):Promise<Response>=>{
+        return axios.get(`${url}/${productId}`)
 }

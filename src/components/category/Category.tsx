@@ -6,20 +6,25 @@ import style from './Category.module.css'
 function Categories() {
   const categories: Category[] = [
     {
-      categoryId: 1,
+      _id: '1',
       categoryName: "AutoMobile",
       picture: "/category/Automobile1.png",
     },
     {
-      categoryId: 2,
+      _id: '2',
       categoryName: "Home Service",
       picture: "/category/HomeServices1.png",
     },
     {
-      categoryId: 3,
+      _id: '3',
       categoryName: "Resturant",
       picture: "/category/Restaurant1.png",
     },
+    {
+      _id:'4',
+      categoryName:'Job',
+      picture:"/category/Automobile1.png"
+    }
   ];
   return (
     <>
@@ -31,22 +36,18 @@ function Categories() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4">
           {categories.map((category: Category) => (
-            <div className="my-2 mx-20 md:mx-10" key={category.categoryId}>
-              <Link to="/shop" className={`${style.card_custom} ${style.link}`} >
-                <div className={`${style.category_bg}`}>
-                  <div className="text-center d-flex flex-column m-auto p-3">
-                    <img
-                    className={`${style.category_img}`}
-                      src={category.picture}
-                      alt={category.categoryName}
-                      style={{ border: "none", borderRadius: "50%" }}
-                    />
-                    <br /> <p className={`${style.category_title}`}>{category.categoryName}</p>
-                  </div>
-                </div>
-                <div className={`${style.blob}`}></div>
-              </Link>
-            </div>
+             <Link to="/shop" className="bg-white rounded-lg shadow-xl hover:shadow-none hover:outline-double hover:outline-2 hover:outline-green-500  m-5 p-5" key={category._id}>
+             <div className="text-center d-flex flex-column m-auto p-3">
+               <img
+                 className="h-[50px] w-[50px] m-auto"
+                 src={category.picture}
+                 alt={category.categoryName}
+                 style={{ border: "none", borderRadius: "50%" }}
+               />
+               <br /> 
+               <p className={`${style.category_title}`}>{category.categoryName}</p>
+             </div>
+           </Link>
           ))}
         </div>
       </section>

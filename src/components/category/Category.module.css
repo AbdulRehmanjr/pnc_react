@@ -5,7 +5,7 @@
 .category_title{
   font-family: 'Cyborg';
   font-weight: 500;
-  color: #000000;
+  color: hsl(0, 0%, 0%);
 }
 .category_img{
   width: 50px;
@@ -26,7 +26,6 @@
   width: 200px;
   height: 200px;
   border-radius: 14px;
-  z-index: 1111;
   overflow: hidden;
   display: flex;
   flex-direction: column;
