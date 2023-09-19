@@ -3,4 +3,5 @@ export class Product {
     name:string
     imageSrc:string
     price:number
+    createdAt:string
 }
