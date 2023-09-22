@@ -123,19 +123,9 @@ export const ProductList = () => {
               </Transition>
             </Menu>
           </div>
-          <div className="col-span-4">
-            <InfiniteScroll
-              className="grid grid-cols-4"
-              dataLength={products.length}
-              next={loadMoreProducts}
-              hasMore={hasMore}
-              loader={<h4 className="col-span-8 text-xl font-bold font-serif">Loading...</h4>}
-            >
-              {products.map((product) => (
+          {products.map((product) => (
                 <Products product={product} key={product._id} />
               ))}
-            </InfiniteScroll>
-          </div>
         </div>
       </div>
     </>

@@ -1,20 +1,21 @@
 
 import { Link } from 'react-router-dom';
 
-import style from './About.module.css'
 function About() {
   return (
-    <>
-      <section className="px-7 grid grid-cols-1 md:grid-cols-2 mt-20 mb-10">
-        <div className="about">
-          <p className="text-green-600 font-bold font-['Cyborg'] text-2xl md:text-4xl">Who we are?</p>
-          <p className="py-4 font-['Cyborg'] text:xl md:text-2xl underline decoration-8 decoration-green-600 underline-offset-8">About PNC</p>
-          <p className="text-black text-lg">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis velit nesciunt nisi quos dolor, tenetur illo omnis itaque iusto explicabo magni esse atque? Quasi, quod! Soluta, provident quod. Quibusdam unde exercitationem numquam molestiae libero inventore incidunt iste? Odio, id veniam alias vero doloribus eos optio aliquid voluptate soluta aut provident!
-          </p>
+    
+      <section className="bg-forest-green  grid grid-cols-1 md:grid-cols-2 p-7 mt-20 mb-10">
+        <div className="font-bold font-serif text-white ">
+          <p className="text-3xl md:text-7xl">Business 365</p>
+          <ul role='list' className="list-none p-6">
+            <li className="flex gap-3 py-2"><img src="/icons/globe-white.png" alt="globe" /> <span className="text-2xl p-2">Connect Business</span></li>
+            <li className="flex gap-3 py-2"><img src="/icons/recycle.png" alt="recycle" /> <span className="text-2xl p-2">Sustainable Commerce</span></li>            
+            <li className="flex gap-3 py-2"><img src="/icons/freelance.png" className="w-[50px] h-[50px]" alt="freelance" /> <span className="text-2xl p-2">Freelance Opportunities</span></li>
+            <li className="flex gap-3 py-2"><img src="/icons/community.png" className="w-[50px] h-[50px]" alt="globe" /> <span className="text-2xl p-2">Join Us</span></li>
+          </ul>
           <div className="m-4 text-center">
               <Link to="/about-us">
-                <button className={`${style.btn_about}`}>
+                <button className=" bg-white text-forest-green text-xl font-serif font-bold rounded-lg p-3 drop-shadow-2xl shadow-white hover:bg-forest-green hover:text-white hover:border-white hover:border-2">
                   <i className="fas fa-info-circle px-1"></i>
                   About Us
                 </button>
@@ -22,10 +23,10 @@ function About() {
             </div>
         </div>
         <div className="hidden md:block">
-          <img className="" src="/intro/about.png" alt="about" />
+          <img className="rounded-xl shadow-md shadow-white" src="/intro/about.png" alt="about" />
         </div>
       </section>
-    </>
+    
   );
 }
 

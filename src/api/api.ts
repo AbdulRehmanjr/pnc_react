@@ -4,5 +4,6 @@ export const API = {
     user:'user',
     login:'login',
     category:'category',
-    product:'product'
+    product:'product',
+    cart:'cart'
 } as const

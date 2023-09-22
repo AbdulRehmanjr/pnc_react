@@ -31,12 +31,12 @@ function Categories() {
       <section id="cards" className="my-10">
         <div className="grid grid-cols-1 mb-14">
           <div className="col-span-1">
-            <h1 className={`text-3xl md:text-4xl text-center ${style.heading} underline decoration-green-600 underline-offset-8 `}>Categories</h1>
+            <h1 className={`text-3xl md:text-7xl text-center font-serif underline decoration-green-600 underline-offset-8 `}>Categories</h1>
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4">
           {categories.map((category: Category) => (
-             <Link to="/shop" className="bg-white rounded-lg shadow-xl hover:shadow-none hover:outline-double hover:outline-2 hover:outline-green-500  m-5 p-5" key={category._id}>
+             <Link to="/shop" className="bg-white rounded-lg shadow-sm shadow-black hover:shadow-none hover:outline-double hover:outline-2 hover:outline-green-500  m-5 p-5" key={category._id}>
              <div className="text-center d-flex flex-column m-auto p-3">
                <img
                  className="h-[50px] w-[50px] m-auto"

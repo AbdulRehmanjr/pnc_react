@@ -11,12 +11,14 @@ function LandingPage(){
 
     return (
         <>
+        <main>
         <Intro />
         <Categories />
         <TopSellers />
         <About />
         <Team />
         <Platform />
+        </main>
         </>
     )
 }

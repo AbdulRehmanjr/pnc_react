@@ -1,5 +1,5 @@
 import { FormEvent, useState } from 'react'
-import './Intro.css'
+
 
 function Intro() {
 
@@ -10,11 +10,11 @@ function Intro() {
       e.preventDefault()
       setSearch('')
   }
+
   return (
-    
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4 md:h-screen h-full bg-[url('/intro/intro_bg.png')] bg-cover bg-center bg-no-repeat">
         <div className="px-5 py-9">
-          <h1 className="text-white p-2 text-3xl md:text-7xl font-bold font-['Cyborg']">Business365 <br /><span className='text-black text-2xl m-4'> Where Local Meets Global</span></h1>
+          <h1 className="text-white p-2 text-3xl md:text-7xl font-bold font-serif">Business365 <br /><span className='text-black text-2xl md:text-4xl'> Where Local Meets Global</span></h1>
           <p className="sm:text-black md:text-white font-bold font-serif text-lg md:text-3xl mt-4 text-left leading-normal">
           "Business365: Connect, Shop, Socialize - Your All-in-One Business Platform."
           </p>
@@ -25,7 +25,6 @@ function Intro() {
             </button>
         </form>
         </div>
-        
       </section>
 
   );
