@@ -8,12 +8,73 @@ import { Rating } from "primereact/rating";
 import { Product } from "../../class/Product";
 import { Products } from "./Product";
 
+interface Item {
+    id: number
+    detail: string
+    image: string
+    alt: string
+}
+const ListItem = ({ data }: { data: Item }) => {
+    return (
+        <li className="flex"><img src={data.image} alt={data.alt} /><span className="p-4">{data.detail}</span></li>
+    )
+}
 
 export const ProductDetail = () => {
 
     const [searchParams] = useSearchParams();
     const [product, setProduct] = useState<Product>()
     const [moreProducts, setMoreProducts] = useState<Product[]>()
+
+    const shipping: Item[] = [
+        {
+            id: 1,
+            detail: 'Free shipping on orders over $300',
+            image: '/icons/shipping.png',
+            alt: 'shipping'
+        },
+        {
+            id: 2,
+            detail: 'International shipping available',
+            image: '/icons/international.png',
+            alt: 'international'
+        }, {
+            id: 3,
+            detail: 'Expedited shipping options',
+            image: '/icons/fast-delivery.png',
+            alt: 'fast-delivery'
+        }, {
+            id: 4,
+            detail: 'Signature required upon delivery',
+            image: '/icons/sign.png',
+            alt: 'signature'
+        },
+    ]
+    const returnPolicy: Item[] = [
+        {
+            id: 1,
+            detail: 'Easy return requests',
+            image: '/icons/return.png',
+            alt: 'return'
+        },
+        {
+            id: 2,
+            detail: 'Pre-paid shipping label included',
+            image: '/icons/barcode.png',
+            alt: 'barcode'
+        }, {
+            id: 3,
+            detail: '10% restocking fee for returns',
+            image: '/icons/percentage.png',
+            alt: 'percentage'
+        }, {
+            id: 4,
+            detail: '7 day return window',
+            image: '/icons/calendar.png',
+            alt: 'calendar'
+        },
+    ]
+    //* get single product detail and products of same seller
     useEffect(() => {
         getProductById(searchParams.get('productId'))
             .then(response => setProduct(response['data']))
@@ -72,13 +133,27 @@ export const ProductDetail = () => {
                 </div>
                 <div className="col-span-8">
                     <TabView>
-                        <TabPanel header="Header I">
-                            <p className="m-0">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                            </p>
+                        <TabPanel header="Review">
+                            <div className="grid grid-cols-3">
+                                <div className="col-span-1">
+                                    <div className="flex">
+                                        <p className="text-[50px] text-forest-green font-serif font-extrabold">5.0</p>
+                                        <div className="flex flex-col text-black font-serif p-4">
+                                            <p>Average Rating</p>
+                                            <Rating className="p-1" height="5px" value={5} readOnly cancel={false} />
+                                        </div>
+                                    </div>
+                                    <p className="flex"><Rating className="p-1" height="5px" value={5} readOnly cancel={false} /><span className="px-3">5</span></p>
+                                    <p className="flex"><Rating className="p-1" height="5px" value={4} readOnly cancel={false} /><span className="px-3">4</span></p>
+                                    <p className="flex"><Rating className="p-1" height="5px" value={3} readOnly cancel={false} /><span className="px-3">3</span></p>
+                                    <p className="flex"><Rating className="p-1" height="5px" value={2} readOnly cancel={false} /><span className="px-3">0</span></p>
+                                    <p className="flex"><Rating className="p-1" height="5px" value={1} readOnly cancel={false} /><span className="px-3">1</span></p>
+                                </div>
+                                <div className="col-span-2">
+                                    <h2 className="text-black text-xl font-serif font-extrabold">Submit Your Review</h2>
+                                    Submit your Rating : <Rating className="p-1" height="5px" value={4} onChange={(e) => e.value}  cancel={false} />
+                                </div>
+                            </div>
                         </TabPanel>
                         <TabPanel header="Delivery Info">
                             <div className="grid grid-cols-2">
@@ -86,23 +161,19 @@ export const ProductDetail = () => {
                                     <h3 className="text-xl font-medium text-gray-900">Shipping</h3>
                                     <div className="mt-4">
                                         <ul role="list" className="list-none space-y-2 pl-4 text-base text-gray-600" >
-                                            <li className="flex"><img src="/icons/shipping.png" alt="shipping" /><span className="p-4">Free shipping on orders over $300</span></li>
-                                            <li className="flex"><img src="/icons/international.png" width={50} height={50} alt="international" /><span className="p-4">
-                                            International shipping available</span></li>
-                                            <li className="flex"><img src="/icons/fast-delivery.png" width={50} height={50} alt="international" /><span className="p-4">Expedited shipping options</span></li>
-                                            <li className="flex"><img src="/icons/sign.png" alt="shipping" /><span className="p-4">Signature required upon delivery</span></li>
+                                            {shipping.map(
+                                                item => <ListItem data={item} key={item.id} />
+                                            )}
                                         </ul>
                                     </div>
                                 </div>
                                 <div className="col-span-1  m-2">
-                                <h3 className="text-xl font-medium text-gray-900">Return Policy</h3>
+                                    <h3 className="text-xl font-medium text-gray-900">Return Policy</h3>
                                     <div className="mt-4">
                                         <ul role="list" className="list-none space-y-2 pl-4 text-base text-gray-600" >
-                                            <li className="flex"><img src="/icons/shipping.png" alt="shipping" /><span className="p-4">Easy return requests</span></li>
-                                            <li className="flex"><img src="/icons/international.png" width={50} height={50} alt="international" /><span className="p-4">
-                                            Pre-paid shipping label included</span></li>
-                                            <li className="flex"><img src="/icons/fast-delivery.png" width={50} height={50} alt="international" /><span className="p-4">10% restocking fee for returns</span></li>
-                                            <li className="flex"><img src="/icons/sign.png" alt="shipping" /><span className="p-4">60 day return window</span></li>
+                                            {returnPolicy.map(
+                                                item => <ListItem data={item} key={item.id} />
+                                            )}
                                         </ul>
                                     </div>
                                 </div>
