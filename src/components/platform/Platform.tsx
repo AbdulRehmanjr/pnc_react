@@ -4,19 +4,17 @@ import style from './PLatform.module.css'
 function Platform() {
 
   return (
-
-    <section className="px-7 grid grid-cols-1 md:grid-cols-2 mt-20 mb-10">
-      <div className="about">
-        <p className="text-green-600 font-bold font-['Cyborg'] text-xl md:text-3xl md:leading-loose">Available on Multiple Platforms</p>
-        <p className="py-4 font-['Cyborg'] text:xl md:text-2xl underline decoration-8 decoration-green-600 underline-offset-8">About PNC</p>
-        <p className="text-black text-lg">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis velit nesciunt nisi quos dolor, tenetur illo omnis itaque iusto explicabo magni esse atque? Quasi, quod! Soluta, provident quod. Quibusdam unde exercitationem numquam molestiae libero inventore incidunt iste? Odio, id veniam alias vero doloribus eos optio aliquid voluptate soluta aut provident!
+    <section className="bg-forest-green grid grid-cols-1 md:grid-cols-2 p-7 mt-20 mb-10">
+      <div className="text-white font-bold font-serif ">
+        <p className="text-xl md:text-4xl p-3">Available on Multiple Platforms</p>
+        <p className="text-lg p-3">
+        Experience seamless access to our platform across various devices and operating systems, ensuring you stay connected and productive wherever you are."
         </p>
-        <ul className='py-5 list-none'>
-          <li className="font-bold text-lg"><i className="fa-solid fa-mobile text-green-600"></i> Mobiles</li>
-          <li className="font-bold text-lg"><i className="fa-solid fa-tablet text-green-600"></i> Tablets</li>
-          <li className="font-bold text-lg"><i className="fa-solid fa-laptop text-green-600"></i> Laptops</li>
-          <li className="font-bold text-lg"><i className="fa-solid fa-computer text-green-600"></i> Desktops</li>
+        <ul className='p-5 list-none'>
+          <li className="text-2xl"><i className="fa-solid fa-mobile text-white"></i> Mobiles</li>
+          <li className="text-2xl"><i className="fa-solid fa-tablet text-white"></i> Tablets</li>
+          <li className="text-2xl"><i className="fa-solid fa-laptop text-white"></i> Laptops</li>
+          <li className="text-2xl"><i className="fa-solid fa-computer text-white"></i> Desktops</li>
         </ul>
         <div className="m-4 text-center">
           <Link to="/about-us">
@@ -28,7 +26,7 @@ function Platform() {
         </div>
       </div>
       <div className="hidden md:block">
-        <img className="" src="/intro/devices.png"
+        <img className="rounded-xl" style={{clipPath: 'polygon(8% 0, 100% 0%, 100% 100%, 0 100%)' }} src="/intro/devices.png"
           alt="platform image" />
       </div>
     </section>

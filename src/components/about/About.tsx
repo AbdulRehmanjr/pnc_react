@@ -7,7 +7,7 @@ function About() {
       <section className="bg-forest-green  grid grid-cols-1 md:grid-cols-2 p-7 mt-20 mb-10">
         <div className="font-bold font-serif text-white ">
           <p className="text-3xl md:text-7xl">Business 365</p>
-          <ul role='list' className="list-none p-6">
+          <ul role='list' className="list-none p-6 cursor-pointer">
             <li className="flex gap-3 py-2"><img src="/icons/globe-white.png" alt="globe" /> <span className="text-2xl p-2">Connect Business</span></li>
             <li className="flex gap-3 py-2"><img src="/icons/recycle.png" alt="recycle" /> <span className="text-2xl p-2">Sustainable Commerce</span></li>            
             <li className="flex gap-3 py-2"><img src="/icons/freelance.png" className="w-[50px] h-[50px]" alt="freelance" /> <span className="text-2xl p-2">Freelance Opportunities</span></li>
@@ -23,7 +23,7 @@ function About() {
             </div>
         </div>
         <div className="hidden md:block">
-          <img className="rounded-xl shadow-md shadow-white" src="/intro/about.png" alt="about" />
+          <img className="rounded-xl shadow-md shadow-white h-full" style={{clipPath: 'polygon(8% 0, 100% 0%, 100% 100%, 0 100%)' }}  src="/intro/about.png" alt="about" />
         </div>
       </section>
     
