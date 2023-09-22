@@ -25,6 +25,6 @@ body {
 }
 
 .p-rating .p-rating-item.p-rating-item-active .p-rating-icon {
-  width: 1rem;
-  height: 1rem;
+  width: 0.8rem;
+  height: 0.8rem;
 }

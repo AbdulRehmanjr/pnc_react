@@ -7,29 +7,22 @@ import { classNames } from "primereact/utils"
 import { useState, useEffect, Fragment } from "react"
 import { Product } from "../../class/Product"
 import { getAllProducts } from "../../services/ProductService"
+import { Paginator } from "primereact/paginator"
 
 
 export const ProductList = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [page, setPage] = useState<number>(1);
-  const [hasMore, setHasMore] = useState<boolean>(true)
+  const [products, setProducts] = useState<Product[]>([]);  
   const [sortBy, setSortBy] = useState<string>("");
-  const itemsPerPage = 10;
+  const [first, setFirst] = useState(0);
+  const [rows, setRows] = useState(12);
 
-  const loadMoreProducts = () => {
-    getAllProducts(page, itemsPerPage)
-      .then((response) => {
-        const newProducts = response['data'];
-        if (newProducts.length > 0) {
-          setProducts([...products, ...newProducts]);
-          setPage(page + 1);
-        } else {
-          setHasMore(false)
-        }
 
-      })
-      .catch((error) => console.error(error));
+  const onPageChange = (event) => {
+    setFirst(event.first);
+    setRows(event.rows);
   };
+
+  const pagedProducts:Product[] = products.slice(first, first + rows);
 
   const sortOptions = [
     { name: "Most Popular", value: "popularity" },
@@ -66,7 +59,11 @@ export const ProductList = () => {
   }, [sortBy]);
 
   useEffect(() => {
-    loadMoreProducts();
+    getAllProducts()
+    .then(
+      (response:Response) => setProducts(response['data'])
+    )
+    .catch(error=> console.error(error))
   }, []);
   return (
     <>
@@ -123,9 +120,16 @@ export const ProductList = () => {
               </Transition>
             </Menu>
           </div>
-          {products.map((product) => (
+          <div className="col-span-4">
+          <Paginator first={first} rows={rows} totalRecords={products.length} rowsPerPageOptions={[12, 24, 36]} onPageChange={onPageChange} />
+          </div>
+          {pagedProducts.map((product) => (
                 <Products product={product} key={product._id} />
               ))}
+          <div className="col-span-4">
+          <Paginator first={first} rows={rows} totalRecords={products.length} rowsPerPageOptions={[12, 24, 36]} onPageChange={onPageChange} />
+          </div>
+            
         </div>
       </div>
     </>
