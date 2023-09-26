@@ -23,4 +23,12 @@ const becomeSeller = (data:SellerRequest,document:File): Promise<Response> => {
     return axios.post(`${url}/create`, formData) 
 }
 
- export {becomeSeller}
+/**
+ * The function getAllRequests returns a promise that resolves to a Response object.
+ * @returns The function `getAllRequests` is returning a Promise that resolves to a `Response` object.
+ */
+const getAllRequests = ():Promise<Response> =>{
+
+    return axios.get(`${url}/all`)
+}
+ export {becomeSeller,getAllRequests}

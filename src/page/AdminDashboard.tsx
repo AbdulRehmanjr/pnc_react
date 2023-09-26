@@ -35,7 +35,7 @@ const AdminDashboard = () => {
                 </div>
                 </div>
             </aside>
-            <main className="col-span-12 md:col-span-10 p-2 h-full">
+            <main className="col-span-12 md:col-span-10 h-screen">
                 <AdminRoutes />
             </main>
         </section>

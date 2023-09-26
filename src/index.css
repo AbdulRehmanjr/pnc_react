@@ -37,3 +37,8 @@ body {
 .p-tabview .p-tabview-nav .p-tabview-ink-bar {
   background-color: #10D087;
 }
+.p-datatable .p-datatable-header{
+  background: #10D087;
+  border: 1px solid #10D087;
+  padding: 0;
+}
