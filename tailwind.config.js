@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors:{
-        "forest-green":"#15A048"
+        "forest-green":"#15A048",
       }
     },
   },

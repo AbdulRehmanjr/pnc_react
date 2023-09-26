@@ -17,58 +17,35 @@ import {
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import { CartPreview } from "../shop/CartPreview";
 import { currentCount, setCartUpdateCallback } from "../../services/order/CartService";
+import { Avatar } from "primereact/avatar";
+import { Menu, Transition } from "@headlessui/react";
 
 
 function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isLogged, setIsLogged] = useState(false); // Replace with your login state
-  const [role, setRole] = useState(""); // Replace with your user role
-  const [user, setUser] = useState({}); // Replace with your user data
   const [count, setCount] = useState<number>(currentCount)
+  const [user,setUser] = useState(undefined)
   useEffect(() => {
-    const token = localStorage.getItem('token_pnc')
+    const token = localStorage.getItem('token')
     if (token)
       setIsLogged(true)
-  }, []);
-  useEffect(() => {
     setCartUpdateCallback((newCount) => {
       setCount(newCount);
     });
+    setUser(JSON.parse(localStorage.getItem('user')))
   }, []);
-
-  const handleLogin = () => {
-    // Implement your login logic here
-    setIsLogged(true);
-    // Set user data and role based on your authentication
-    setUser({ photoUri: "user-photo.jpg" });
-    setRole("ADMIN"); // Example role for testing, replace with actual user role
-  };
-
 
   const handleLogout = () => {
     setIsLogged(false);
     localStorage.removeItem('token_pnc')
+    localStorage.removeItem('user')
   };
 
   const toggleCart = () => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
   }
-  const products = [
-    { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
-    { name: 'Engagement', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
-    { name: 'Security', description: 'Your customers’ data will be safe and secure', href: '#', icon: FingerPrintIcon },
-    { name: 'Integrations', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
-    { name: 'Automations', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
-  ]
-  const callsToAction = [
-    { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
-    { name: 'Contact sales', href: '#', icon: PhoneIcon },
-  ]
 
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-  }
 
 
   return (
@@ -81,21 +58,42 @@ function Header() {
               <span className="hidden md:gridself-center text-xl font-semibold whitespace-nowrap dark:text-white mx-2">Business365</span>
             </a>
             <div className="flex items-center lg:order-2">
-
-              <button className="mx-4 p-overlay-badge text-2xl" onClick={toggleCart}>
-                <img src="/icons/cart.png" width={30} alt="cart icon" />
+              {
+                isLogged &&
+                 <button className="mx-4 p-overlay-badge text-2xl" onClick={toggleCart}>
+                  <img src="/icons/cart.png" width={30} alt="cart icon" />
                   {count != 0 && <Badge value={count} severity="success"></Badge>}
-              </button>
-              {isLogged ? (
-                <button onClick={handleLogout} className="text-2xl font-semibold leading-6 text-gray-900">
-                  Log Out <i className="fa-solid fa-right-from-bracket"></i>
                 </button>
-              ) : (
-                <Link to="/login" className="text-md font-light leading-6 text-gray-900">
-                   <img src="/icons/user.png" width={30} alt="user icon" />
-                </Link>
-              )}
-              <a href="#" className="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">Get started</a>
+              }
+              <Menu as="div" className="relative inline-block">
+                {isLogged ? (
+                  <Menu.Button className="group inline-flex justify-center text-md font-medium text-gray-700 hover:text-gray-900">
+                    <Avatar className="px-2" image={"/icons/expert.png"} size="large" shape="circle" />
+                  </Menu.Button>
+                ) : (
+                  <Menu.Button className="group inline-flex justify-center text-md font-medium text-gray-700 hover:text-gray-900">
+                    <img src="/icons/user.png" width={30} alt="user icon" />
+                  </Menu.Button>
+                )}
+                <Transition
+                  as={Fragment}
+                  enter="transition ease-out duration-100"
+                  enterFrom="transform opacity-0 scale-95"
+                  enterTo="transform opacity-100 scale-100"
+                  leave="transition ease-in duration-75"
+                  leaveFrom="transform opacity-100 scale-100"
+                  leaveTo="transform opacity-0 scale-95"
+                >
+                  <Menu.Items className="absolute right-0 z-10 p-1 w-40 origin-top-right rounded-md bg-white text-black font-serif font-bold">
+                    <div className="p-2">
+                      <Menu.Item> 
+                        {isLogged ? <button onClick={handleLogout}>Logout</button> : <Link to="/login" className="p-2">Login</Link>}
+                      </Menu.Item>
+                    </div>
+                  </Menu.Items>
+                </Transition>
+              </Menu>
+
               <button data-collapse-toggle="mobile-menu-2" type="button" className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
                 <span className="sr-only">Open main menu</span>
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path></svg>
@@ -105,16 +103,13 @@ function Header() {
             <div className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
               <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                 <li>
-                  <a href="#" className="block py-2 pr-4 pl-3 text-white rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white" aria-current="page">Home</a>
+                  <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Stores</a>
                 </li>
                 <li>
-                  <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Company</a>
+                  <Link to="/become-seller" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Become Seller</Link>
                 </li>
                 <li>
-                  <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Marketplace</a>
-                </li>
-                <li>
-                  <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Features</a>
+                  <Link to="/admin-dashboard" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Admin</Link>
                 </li>
                 <li>
                   <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Team</a>

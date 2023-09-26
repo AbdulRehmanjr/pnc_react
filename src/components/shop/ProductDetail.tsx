@@ -3,10 +3,12 @@ import { useSearchParams } from "react-router-dom";
 import { getAllProducts, getProductById } from "../../services/ProductService";
 
 import { TabView, TabPanel } from 'primereact/tabview';
+import { Avatar } from 'primereact/avatar';
 
 import { Rating } from "primereact/rating";
 import { Product } from "../../class/Product";
 import { Products } from "./Product";
+import { Paginator } from "primereact/paginator";
 
 interface Item {
     id: number
@@ -25,6 +27,16 @@ export const ProductDetail = () => {
     const [searchParams] = useSearchParams();
     const [product, setProduct] = useState<Product>()
     const [moreProducts, setMoreProducts] = useState<Product[]>()
+    const [first, setFirst] = useState(0);
+    const [rows, setRows] = useState(3);
+    const [reviews,setReviews] =useState<any[]>()
+  
+    const onPageChange = (event) => {
+        setFirst(event.first);
+        setRows(event.rows);
+      };
+    
+      const pagedReviews:Product[] = reviews?.slice(first, first + rows);
 
     const shipping: Item[] = [
         {
@@ -74,6 +86,7 @@ export const ProductDetail = () => {
             alt: 'calendar'
         },
     ]
+
     //* get single product detail and products of same seller
     useEffect(() => {
         getProductById(searchParams.get('productId'))
@@ -87,36 +100,34 @@ export const ProductDetail = () => {
     return (
         <section className="col-span-8 my-2">
             <div className="grid grid-cols-8 m-2">
-                <div className="col-span-3 p-4">
+                <div className="col-span-8 md:col-span-3 p-4">
                     <img className="rounded-lg shadow-lg w-full h-[420px]" src={product?.imageSrc} alt="Image" />
                 </div>
-                <div className="col-span-5 font-mono p-2 ">
-                    <h2 className="text-4xl  text-black">{product?.name}</h2>
-                    <div className="text-base text-black p-3">
+                <div className="col-span-8 md:col-span-5 font-sans font-bold p-2 ">
+                    <h2 className="text-5xl md:text-4xl  text-black">{product?.name}</h2>
+                    <div className="text-base text-black py-3 md:p-3">
                         <p>Category: <span className="text-sm text-gray-600">Custom</span></p>
                         <p>Code: <span className="text-sm text-gray-600">ERGTUH1232</span></p>
-                        <p className="text-2xl font-mono"> ${product?.price}</p>
-                        <Rating className="p-1" height="5px" value={5} readOnly cancel={false} />
+                        <p className="text-2xl text-gray-600 my-3"><span className="text-black">Price: </span> ${product?.price}</p>
+                        <div className="flex"><Rating className="py-1" height="5px" value={5} readOnly cancel={false} /><p className="text-gray-400 mx-1 px-1">(Reviews)</p></div>
                     </div>
                     <hr />
-                    <h3 className="text-2xl font-bold font-serif text-gray-900 my-2">Description</h3>
+                    <h3 className="text-3xl md:text-2xl font-bold font-sans text-gray-900 my-2">Description</h3>
 
-                    <p className="text-base text-black font-serif">
+                    <p className="text-base font-light text-black font-sans text-justify">
                         The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: "Black". Need to add an extra pop of color to your outfit? Our white tee has you covered.
                     </p>
-                    <div className="mt-5">
-                        <button className="bg-gray-300 text-black text-base font-serif font-bold  rounded-sms p-2">
-                            Add To Cart
-                            <i className="fa-solid fa-cart-shopping px-2"></i>
+                    <div className="mt-5 text-white">
+                        <button className="bg-green-500 text-base font-serif font-bold  rounded-sm shadow-lg  p-2">
+                            <i className="fa-solid fa-cart-shopping px-2"></i>  Add To Cart
                         </button>
-                        <button className="bg-gray-300 text-black text-base font-serif font-bold rounded-sms p-2 mx-2">
-                            WishList
-                            <i className="fa-solid fa-heart px-2"></i>
+                        <button className="bg-red-400 text-base font-serif font-bold rounded-sm shadow-lg p-2 mx-2">
+                            
+                            <i className="fa-solid fa-heart px-2"></i>WishList
                         </button>
                     </div>
                     <div className="mt-5">
                         <h3 className="text-sm font-medium text-gray-900">Highlights</h3>
-
                         <div className="mt-4">
                             <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
                                 <li className="text-gray-400"><span className="text-gray-600">Hand cut and sewn locally</span></li>
@@ -127,15 +138,12 @@ export const ProductDetail = () => {
                             </ul>
                         </div>
                     </div>
-                    <div className="mt-5">
-
-                    </div>
                 </div>
                 <div className="col-span-8">
                     <TabView>
-                        <TabPanel header="Review">
+                        <TabPanel header="Reviews">
                             <div className="grid grid-cols-3">
-                                <div className="col-span-1">
+                                <div className="col-span-3 md:col-span-1 my-1 py-1">
                                     <div className="flex">
                                         <p className="text-[50px] text-forest-green font-serif font-extrabold">5.0</p>
                                         <div className="flex flex-col text-black font-serif p-4">
@@ -143,22 +151,43 @@ export const ProductDetail = () => {
                                             <Rating className="p-1" height="5px" value={5} readOnly cancel={false} />
                                         </div>
                                     </div>
-                                    <p className="flex"><Rating className="p-1" height="5px" value={5} readOnly cancel={false} /><span className="px-3">5</span></p>
-                                    <p className="flex"><Rating className="p-1" height="5px" value={4} readOnly cancel={false} /><span className="px-3">4</span></p>
-                                    <p className="flex"><Rating className="p-1" height="5px" value={3} readOnly cancel={false} /><span className="px-3">3</span></p>
-                                    <p className="flex"><Rating className="p-1" height="5px" value={2} readOnly cancel={false} /><span className="px-3">0</span></p>
-                                    <p className="flex"><Rating className="p-1" height="5px" value={1} readOnly cancel={false} /><span className="px-3">1</span></p>
+                                    <div className="flex"><Rating className="p-1" height="5px" value={5} readOnly cancel={false} /><span className="px-3">5</span></div>
+                                    <div className="flex"><Rating className="p-1" height="5px" value={4} readOnly cancel={false} /><span className="px-3">4</span></div>
+                                    <div className="flex"><Rating className="p-1" height="5px" value={3} readOnly cancel={false} /><span className="px-3">3</span></div>
+                                    <div className="flex"><Rating className="p-1" height="5px" value={2} readOnly cancel={false} /><span className="px-3">0</span></div>
+                                    <div className="flex"><Rating className="p-1" height="5px" value={1} readOnly cancel={false} /><span className="px-3">1</span></div>
                                 </div>
-                                <div className="col-span-2">
+                                <div className="col-span-3 md:col-span-2 my-1 py-1">
                                     <h2 className="text-black text-xl font-serif font-extrabold">Submit Your Review</h2>
-                                    Submit your Rating : <Rating className="p-1" height="5px" value={4} onChange={(e) => e.value}  cancel={false} />
+                                    <div className="flex"><span>Submit your Rating :</span> <Rating className="p-1 mx-2" height="5px" value={4} onChange={(e) => e.value} cancel={false} /></div>
+                                    <form className="my-2 py-2">
+                                        <textarea className="border-2 hover:border-gray-300" name="review" id="review" cols={30} rows={5} placeholder="Write your review"></textarea>
+                                        <div className="text-white font-sans text-base my-2">
+                                            <button className="bg-forest-green rounded-sm shadow-md p-2">Submit Review</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div className="col-span-3">
+                                    <h1 className="text-2xl text-black font-serif">Reviews</h1>
+                                    <hr />
+                                    <div className="flex gap-2 m-2 p-2">
+                                        <Avatar className="px-2" icon="fas fa-user" size="xlarge" shape="circle" />
+                                        <div className="text-black text-base  font-serif">
+                                            <p className="font-extrabold">User Name</p>
+                                            <Rating value={5} readOnly cancel={false} />
+                                            <p className="py-2 text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, vero doloremque. Neque, saepe. Repudiandae iste doloribus optio quae, ullam sequi?</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-span-3">
+                                <Paginator first={first} rows={rows} totalRecords={reviews?.length} rowsPerPageOptions={[3, 6, 9]} onPageChange={onPageChange} />
                                 </div>
                             </div>
                         </TabPanel>
-                        <TabPanel header="Delivery Info">
+                        <TabPanel header="Delivery Information">
                             <div className="grid grid-cols-2">
-                                <div className="col-span-1  m-2">
-                                    <h3 className="text-xl font-medium text-gray-900">Shipping</h3>
+                                <div className="col-span-2 md:col-span-1  m-2">
+                                    <h3 className="text-xl font-bold text-gray-900">Shipping</h3>
                                     <div className="mt-4">
                                         <ul role="list" className="list-none space-y-2 pl-4 text-base text-gray-600" >
                                             {shipping.map(
@@ -167,8 +196,8 @@ export const ProductDetail = () => {
                                         </ul>
                                     </div>
                                 </div>
-                                <div className="col-span-1  m-2">
-                                    <h3 className="text-xl font-medium text-gray-900">Return Policy</h3>
+                                <div className="col-span-2 md:col-span-1  m-2">
+                                    <h3 className="text-xl font-bold text-gray-900">Return Policy</h3>
                                     <div className="mt-4">
                                         <ul role="list" className="list-none space-y-2 pl-4 text-base text-gray-600" >
                                             {returnPolicy.map(
@@ -197,9 +226,7 @@ export const ProductDetail = () => {
                         {
                             moreProducts?.map(
                                 (product: Product) => (
-                                    <div className="col-span-1" key={product._id}>
-                                        <Products product={product} />
-                                    </div>
+                                        <Products product={product} key={product._id} /> 
                                 )
                             )
                         }

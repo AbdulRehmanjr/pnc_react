@@ -71,7 +71,6 @@ export const ProductList = () => {
         <div className=" sticky top-0">
           <Filter />
         </div>
-
       </div>
       <div className="col-span-8 md:col-span-6">
         <div className="grid grid-cols-span-4 gap-2">
@@ -121,13 +120,13 @@ export const ProductList = () => {
             </Menu>
           </div>
           <div className="col-span-4">
-          <Paginator first={first} rows={rows} totalRecords={products.length} rowsPerPageOptions={[12, 24, 36]} onPageChange={onPageChange} />
+          <Paginator first={first} rows={rows} totalRecords={products?.length} rowsPerPageOptions={[12, 24, 36]} onPageChange={onPageChange} />
           </div>
           {pagedProducts.map((product) => (
                 <Products product={product} key={product._id} />
               ))}
           <div className="col-span-4">
-          <Paginator first={first} rows={rows} totalRecords={products.length} rowsPerPageOptions={[12, 24, 36]} onPageChange={onPageChange} />
+          <Paginator first={first} rows={rows} totalRecords={products?.length} rowsPerPageOptions={[12, 24, 36]} onPageChange={onPageChange} />
           </div>
             
         </div>

@@ -1,7 +1,8 @@
 import axios from "axios";
-import { API } from "../api/api";
+import { Environment } from "../constant/environment";
 
-const url:string = `${API.baseUrl}/${API.product}`
+
+const url:string = `${Environment.baseUrl}/${Environment.product}`
 
 
 /**

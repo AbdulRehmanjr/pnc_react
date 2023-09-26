@@ -1,16 +1,20 @@
-import { API } from "../../api/api";
+
 import { Product } from "../../class/Product";
 import { Cart } from "../../class/order/Cart";
 import { CartItem } from "../../class/order/CartItem";
+import { Environment } from "../../constant/environment";
 
 
-const url: string = `${API.baseUrl}/${API.cart}`
+const url: string = `${Environment.baseUrl}/${Environment.cart}`
 
 //* get the cart from storage or make new one 
 export const getCart = (): Cart => {
 
     const cartData = JSON.parse(localStorage.getItem('cart'))
-    return cartData.length != 0 ? cartData : new Cart();
+    console.log('data',cartData)
+    const cart = cartData ? cartData : new Cart();
+    console.log('cart',cart)
+    return cart
 }
 
 //* Initialize the cart
@@ -20,23 +24,23 @@ export const addToCart = (product: Product) => {
 
     //* check if product is already in cart 
     const existingCartItem = cart?.cartItems.find(
-        (item:CartItem) => item.product._id === product._id
+        (item: CartItem) => item.product._id === product._id
     );
 
     //* if productis already in cart then check for limit of product 
     if (existingCartItem) {
-        if(!(existingCartItem?.quantity < 5))
+        if (!(existingCartItem?.quantity < 5))
             return
-            existingCartItem.quantity += 1;
+        existingCartItem.quantity += 1;
     }
     else {
         //* make new cart item and add to cart 
-        if (cart.cartItems?.length < 5) {
+        if (cart?.cartItems?.length < 5) {
             let cartItem = new CartItem();
             cartItem.product = product
             cartItem.quantity = 1
 
-            cart.cartItems.push(cartItem)
+            cart?.cartItems.push(cartItem)
         }
     }
 
@@ -44,26 +48,25 @@ export const addToCart = (product: Product) => {
     storeCartData(cart);
 }
 
-let cartUpdateCallback: (newCount: number) => void = () => {}; 
+let cartUpdateCallback: (newCount: number) => void = () => { };
 
 export const setCartUpdateCallback = (callback: (newCount: number) => void) => {
     cartUpdateCallback = callback;
 }
-export const currentCount = ():number=>{
-    const count=   cart.cartItems?.reduce(
+export const currentCount = (): number => {
+    const count = cart?.cartItems?.reduce(
         (total, item) => total + item.quantity,
         0
     )
-    console.log(count)
     return count
 }
 const updateCartCount = () => {
-   return  cart.cartItems?.reduce(
+    return cart?.cartItems?.reduce(
         (total, item) => total + item.quantity,
         0
     )
 }
 
-export const storeCartData = (cart:Cart) => {
+export const storeCartData = (cart: Cart) => {
     localStorage.setItem('cart', JSON.stringify(cart))
 }

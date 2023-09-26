@@ -28,3 +28,12 @@ body {
   width: 0.8rem;
   height: 0.8rem;
 }
+
+.p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+  background: #ffffff;
+  border-color: #10D087;
+  color: #10D087;
+}
+.p-tabview .p-tabview-nav .p-tabview-ink-bar {
+  background-color: #10D087;
+}

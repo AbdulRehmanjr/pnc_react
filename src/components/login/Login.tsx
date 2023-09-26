@@ -8,13 +8,13 @@ import { FormControl, InputLabel, FilledInput, InputAdornment, IconButton } from
 import { FieldValues, useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import LoginService from '../../services/LoginService';
+import { currentUserInfo, loginUser, setToken } from '../../services/LoginService';
+
 
 
 
 function Login() {
 
-  const loginService = new LoginService()
 
   const { handleSubmit, register, formState: { errors } } = useForm();
 
@@ -26,26 +26,26 @@ function Login() {
     event.preventDefault();
   };
   const naviate = useNavigate();
-  const onSubmit = (data: FieldValues) => {
 
-    loginService.loginUser(data)
-      .then(response => response.json())
-      .then(data => {
-        console.log('redirection')
-        loginService.setToken(data)
-        naviate('/')
+  const onSubmit = (data: FieldValues) => {
+    loginUser(data)
+      .then((response: Response) => {
+        setToken(response['data'])
       })
       .catch(error => console.error(error))
+      .finally(
+        () =>
+          currentUserInfo()
+            .then((response: Response) => localStorage.setItem('user', JSON.stringify(response['data'])))
+            .catch((error: Error) => console.log(error))
+            .finally(() => naviate('/'))
+      )
   };
   return (
-    <section className={`grid grid-cols-2`}>
-      <div className={`hidden md:block col-span-1 h-screen`}>
-        <img src="/map.jpeg"
-          className="h-5/6" alt="Sample image" />
-      </div>
-      <div className="col-span-1 p-4 m-6">
+    <section className="grid grid-cols-2 bg-forest-green md:bg-inherit h-screen">
+      <div className="col-span-2 md:col-span-1 mt-[50px] mx-2 md:p-4 md:m-6">
         <form className="bg-gray-200 rounded-lg drop-shadow-xl" onSubmit={handleSubmit(onSubmit)}>
-          <h1 className="font-['Cyborg'] text-green-600 text-xl text-center p-4   md:text-4xl ">Login Form</h1>
+          <h1 className="font-serif font-extrabold text-black text-2xl text-center p-4 md:text-5xl">Login</h1>
           <div className="flex flex-row items-center justify-center">
             <p className="text-xl">Sign in with</p>
             <button type="button" className="btn btn-success btn-floating mx-1">
@@ -134,19 +134,18 @@ function Login() {
               </FormControl>
               {errors?.password && <p className="error-message">{errors.password?.message?.toString()}</p>}
             </div>
-
-
           </div>
-
-          <div className="text-center text-lg-start mt-4 pt-2">
-            <button type="submit" className="text-green-600 text-sm bg-white drop-shadow-md font-bold font-['Cyborg']  rounded-full p-4 my-5">
+          <div className="text-center text-lg-start my-4 py-2">
+            <button type="submit" className="text-green-600 text-lg bg-white drop-shadow-md font-bold font-serif rounded-xl p-2 px-6 my-2">
               Login
             </button>
             <p className="text-black font-bold mt-2 pt-1 mb-0">Don't have an account? <Link to="/signup"
               className="text-red-500">Register</Link></p>
           </div>
-
         </form>
+      </div>
+      <div className="hidden md:block col-span-1 h-screen">
+        <img src="/login_1.jpeg" style={{ clipPath: 'polygon(8% 0, 100% 0%, 100% 100%, 0 100%)' }} className="h-full w-full" alt="login" loading='lazy' />
       </div>
     </section>
   )

@@ -1,9 +1,10 @@
 
-import { API } from "../api/api";
+
 import axois from 'axios'
+import { Environment } from '../constant/environment'
 
 
-const url: string = `${API.baseUrl}/${API.category}`
+const url: string = `${Environment.baseUrl}/${Environment.category}`
 
 
 /**

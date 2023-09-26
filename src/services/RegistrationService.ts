@@ -1,10 +1,11 @@
 
 import { FieldValues } from "react-hook-form";
-import { API } from "../api/api";
+import { Environment } from "../constant/environment";
+
 
 
 class RegistrationService {
-    #url: string = `${API.baseUrl}/${API.user}`
+    #url: string = `${Environment.baseUrl}/${Environment.user}`
     registerUser = async (data: FieldValues) => {
 
         return await fetch(`${this.#url}/register`, {

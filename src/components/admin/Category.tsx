@@ -11,6 +11,7 @@ import { addCategory, deleteCategories, getAllCategories } from "../../services/
 
 import { Toast } from 'primereact/toast';
 import { AxiosError } from "axios"
+import { Category } from "../../class/Category"
 
 
 
@@ -97,7 +98,7 @@ const Categories = () => {
         );
     };
 
-    const imageTemplate = (rowData: Category) => {
+    const imageTemplate = (rowData: any) => {
 
         return <img src={`${rowData.image}`} alt={rowData.image} className="rounded-md drop-shadow-lg" style={{ width: '44px' }} />;
     }
@@ -134,7 +135,7 @@ const Categories = () => {
 
     return (
         <section className="grid grid-cols-12">
-            <div className="col-span-12 mb-4">
+            <div className="col-span-12">
                 <h1 className="text-xl md:text-3xl font-serif font-bold">Category Management</h1>
             </div>
             <div className="col-span-12 mx-auto">

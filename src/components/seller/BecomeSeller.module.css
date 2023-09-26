@@ -27,7 +27,8 @@
     content: "✔"; /* The checkmark symbol (✔) */
     position: absolute;
     left: 0;
-    color: green; /* Color of the checkmark */
+    color: #fff; /* Color of the checkmark */
+    font-size:20px
   }
 
   
