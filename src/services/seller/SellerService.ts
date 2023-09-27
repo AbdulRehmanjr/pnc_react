@@ -31,4 +31,16 @@ const getAllRequests = ():Promise<Response> =>{
 
     return axios.get(`${url}/all`)
 }
- export {becomeSeller,getAllRequests}
+
+/**
+ * The function `getRequestByUserId` makes a GET request to retrieve user data based on the provided
+ * `userId`.
+ * @param {string} userId - The `userId` parameter is a string that represents the unique identifier of
+ * a user.
+ * @returns The function `getRequestByUserId` is returning a Promise that resolves to a `Response`
+ * object.
+ */
+const getRequestByUserId = (userId:string):Promise<Response> =>{
+    return axios.get(`${url}/user/${userId}`)
+}
+ export {becomeSeller,getAllRequests,getRequestByUserId}

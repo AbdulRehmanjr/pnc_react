@@ -4,7 +4,7 @@ import style from './Team.module.css'
 function Team() {
   return (
     <section className="px-7 grid grid-cols-1 md:grid-cols-2 mt-20 mb-10">
-      <div className="text-green-600 font-bold font-serif">
+      <div className="text-green-600 font-bold font-serif" data-aos="fade-right" data-aos-duration="1000">
         <p className=" text-2xl md:text-4xl md:leading-loose">Contact Our Team</p>
         <p className="text-black text-md">
         At Business 365, we're committed to revolutionizing the way you connect, work, and shop. Our vision is to empower individuals, entrepreneurs, and businesses to thrive in a sustainable and interconnected world.
@@ -24,8 +24,8 @@ function Team() {
           </Link>
         </div>
       </div>
-      <div className="hidden md:block">
-        <img className="rounded-xl h-full" style={{clipPath: 'polygon(8% 0, 100% 0%, 100% 100%, 0 100%)' }} src="/intro/contact-green.png"
+      <div className="hidden md:block" data-aos="fade-left" data-aos-duration="3000">
+        <img className="rounded-xl h-full" style={{clipPath: 'polygon(0 0, 100% 0, 100% 50%, 100% 99%, 0 100%, 22% 52%)' }} src="/intro/contact-green.png"
           alt="team picture" />
       </div>
     </section>

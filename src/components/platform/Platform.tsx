@@ -8,7 +8,7 @@ function Platform() {
       <div className="text-white font-bold font-serif ">
         <p className="text-xl md:text-4xl p-3">Available on Multiple Platforms</p>
         <p className="text-lg p-3">
-        Experience seamless access to our platform across various devices and operating systems, ensuring you stay connected and productive wherever you are."
+          Experience seamless access to our platform across various devices and operating systems, ensuring you stay connected and productive wherever you are."
         </p>
         <ul className='p-5 list-none'>
           <li className="text-2xl"><i className="fa-solid fa-mobile text-white"></i> Mobiles</li>
@@ -25,9 +25,10 @@ function Platform() {
           </Link>
         </div>
       </div>
-      <div className="hidden md:block">
-        <img className="rounded-xl" style={{clipPath: 'polygon(8% 0, 100% 0%, 100% 100%, 0 100%)' }} src="/intro/devices.png"
-          alt="platform image" />
+      <div className="hidden md:block">        
+          <img className="drop-shadow-xl" style={{ clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)' }} src="/intro/devices.png"
+            alt="platform image" />
+
       </div>
     </section>
   )
