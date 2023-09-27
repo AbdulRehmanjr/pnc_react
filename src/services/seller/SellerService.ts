@@ -1,5 +1,5 @@
 import axios from "axios"
-import { Environment } from "../../constant/environment"
+import { Environment } from "../../constants/environment"
 import { SellerRequest } from "../../class/seller/SellerRequest"
 
 

@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
-import { Environment } from '../constant/environment';
+import { Environment } from '../constants/environment';
 
 const axiosInstance :AxiosInstance= axios.create({
   baseURL: `${Environment.baseUrl}`,

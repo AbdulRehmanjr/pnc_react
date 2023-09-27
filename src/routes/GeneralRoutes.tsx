@@ -1,15 +1,16 @@
 import { Route,Routes, useLocation} from 'react-router-dom';
-import LandingPage from '../page/LandingPage';
-import AboutDetail from '../components/about/AboutDetail';
-import ContactUs from '../components/team/Contactus';
+import LandingPage from '../pages/LandingPage';
+import AboutDetail from '../components/general/about/AboutDetail';
+import ContactUs from '../components/general/team/Contactus';
 import BecomeSeller from '../components/seller/BecomeSeller';
-import Header from '../components/header/Header';
-import Login from '../components/login/Login';
-import Signup from '../components/login/Signup';
+import Header from '../components/general/header/Header';
+import Login from '../components/general/login/Login';
+import Signup from '../components/general/login/Signup';
 import { useState, useEffect } from 'react';
 import SellerRequestForm from '../components/seller/SellerRequestForm';
-import AdminDashboard from '../page/AdminDashboard';
-import ShopPage from '../page/ShopPage';
+import AdminDashboard from '../pages/AdminDashboard';
+import ShopPage from '../pages/ShopPage';
+import { SellerDashboard } from '../pages/SellerDashbaord';
 
 
 const routes = [
@@ -28,6 +29,10 @@ const routes = [
     {
       path:'/admin-dashboard/*',
       component:AdminDashboard
+    },
+    {
+      path:'/seller-dashboard',
+      component:SellerDashboard
     },
     {
       path:'/shop/*',

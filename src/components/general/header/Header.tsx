@@ -15,8 +15,8 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
-import { CartPreview } from "../shop/CartPreview";
-import { currentCount, setCartUpdateCallback } from "../../services/order/CartService";
+import { CartPreview } from "../../shop/CartPreview";
+import { currentCount, setCartUpdateCallback } from "../../../services/order/CartService";
 import { Avatar } from "primereact/avatar";
 import { Menu, Transition } from "@headlessui/react";
 

@@ -2,7 +2,7 @@
 import { Product } from "../../class/Product";
 import { Cart } from "../../class/order/Cart";
 import { CartItem } from "../../class/order/CartItem";
-import { Environment } from "../../constant/environment";
+import { Environment } from "../../constants/environment";
 
 
 const url: string = `${Environment.baseUrl}/${Environment.cart}`

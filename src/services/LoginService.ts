@@ -1,7 +1,7 @@
 
 import { FieldValues } from "react-hook-form";
 import { axiosInstance } from "../interceptor/requestInterceptor";
-import { Environment } from "../constant/environment";
+import { Environment } from "../constants/environment";
 
 const url: string = `${Environment.baseUrl}/${Environment.user}`
 

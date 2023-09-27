@@ -5,7 +5,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import PersonIcon from '@mui/icons-material/Person';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import { FormControl, InputLabel, FilledInput, InputAdornment, IconButton } from '@mui/material';
-import RegistrationService from '../../services/RegistrationService'
+import RegistrationService from '../../../services/RegistrationService'
 
 
 function Signup() {

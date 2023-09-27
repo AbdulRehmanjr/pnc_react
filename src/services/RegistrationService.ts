@@ -1,6 +1,6 @@
 
 import { FieldValues } from "react-hook-form";
-import { Environment } from "../constant/environment";
+import { Environment } from "../constants/environment";
 
 
 
