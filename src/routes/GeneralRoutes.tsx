@@ -31,7 +31,7 @@ const routes = [
       component:AdminDashboard
     },
     {
-      path:'/seller-dashboard',
+      path:'/seller-dashboard/*',
       component:SellerDashboard
     },
     {
