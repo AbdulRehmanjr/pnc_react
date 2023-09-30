@@ -5,7 +5,7 @@ import { Products } from "./Product"
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { classNames } from "primereact/utils"
 import { useState, useEffect, Fragment } from "react"
-import { Product } from "../../class/Product"
+import { Product } from "../../class/inventory/Product"
 import { getAllProducts } from "../../services/ProductService"
 import { Paginator } from "primereact/paginator"
 

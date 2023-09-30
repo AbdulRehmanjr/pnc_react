@@ -1,6 +1,6 @@
 export class Category {
     _id:string
-    categoryName:string
+    name:string
     picture:string
   }
   

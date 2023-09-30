@@ -6,7 +6,7 @@ import { TabView, TabPanel } from 'primereact/tabview';
 import { Avatar } from 'primereact/avatar';
 
 import { Rating } from "primereact/rating";
-import { Product } from "../../class/Product";
+import { Product } from "../../class/inventory/Product";
 import { Products } from "./Product";
 import { Paginator } from "primereact/paginator";
 
