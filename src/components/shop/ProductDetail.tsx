@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { getAllProducts, getProductById } from "../../services/ProductService";
+import { getAllProducts, getProductById } from "../../services/inventory/ProductService";
 
 import { TabView, TabPanel } from 'primereact/tabview';
 import { Avatar } from 'primereact/avatar';

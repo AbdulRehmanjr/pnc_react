@@ -98,7 +98,7 @@ const Categories = () => {
         );
     };
 
-    const imageTemplate = (rowData: any) => {
+    const imageTemplate = (rowData) => {
 
         return <img src={`${rowData.image}`} alt={rowData.image} className="rounded-md drop-shadow-lg" style={{ width: '44px' }} />;
     }

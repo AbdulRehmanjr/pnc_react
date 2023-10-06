@@ -12,8 +12,7 @@ function Intro() {
   }
 
   return (
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-4 h-screen bg-[url('/intro/intro_bg.png')] bg-cover bg-center bg-no-repeat brightness-80">
-      
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-4 h-screen bg-[url('/intro/intro_bg.png')] bg-cover bg-center bg-no-repeat brightness-80">  
         <div className="px-5 py-9">
           <h1 className="text-white text-5xl md:text-9xl font-bold font-serif">Business365<span className='text-2xl md:text-4xl'> Where Local Meets Global</span></h1>
           <p className="text-white font-bold font-serif text-xl md:text-3xl mt-4 text-left leading-normal">

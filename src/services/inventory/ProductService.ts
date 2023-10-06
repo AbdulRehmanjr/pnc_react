@@ -1,5 +1,6 @@
 import axios from "axios";
-import { Environment } from "../constants/environment";
+import { Environment } from "../../constants/environment";
+import { Product } from "../../class/inventory/Product";
 
 
 const url:string = `${Environment.baseUrl}/${Environment.product}`
@@ -28,4 +29,13 @@ export const getAllProducts = ():Promise<Response> =>{
  */
 export const getProductById = (productId:string):Promise<Response>=>{
         return axios.get(`${url}/${productId}`)
+}
+
+export const createProduct = (product:Product,file:File) :Promise<Response>  =>{
+
+    let formData = new FormData()
+    formData.append('product', JSON.stringify(product))
+    formData.append('image', file)
+
+    return axios.post(`${url}/save`,formData)
 }

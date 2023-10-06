@@ -3,16 +3,15 @@ import SellerRoutes from "../routes/SellerRoutes"
 
 export const SellerDashboard = () => {
     return (
-        <main className="grid grid-cols-12 bg-green-200 h-[calc(100vh-74.5px)]">
+        <main className="grid grid-cols-12 bg-green-200 h-[calc(100%-74.5px)]">
             <div className="col-span-1 bg-gray-200 p-3">
                 <div className="sticky top-[70px]">
                     <img src="/vite.svg" alt="logo" />
                     <ul className="list-none text-xl my-2 ">
                         <li className="bg-slate-50 text-center rounded-xl p-2 m-1">
-                            <Link to="/seller-dashboard" >
+                            <Link to="/seller-dashboard" className="h-100 w-100" >
                                 <i className="fa-solid fa-house"></i>
                             </Link>
-
                         </li>
                         <li className="bg-slate-50 text-center rounded-xl p-2 m-1">
                             <Link to="communication">
