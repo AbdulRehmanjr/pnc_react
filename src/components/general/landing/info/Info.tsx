@@ -7,7 +7,7 @@ export const Info = () => {
                 <h1 className="text-5xl text-forest-green font-bold font-sans">Sell online wherever your customers are</h1>
             </div>
             <div className="hidden md:grid md:col-span-1" data-aos="fade-right" data-aos-duration="2000">
-                <img src="/landing/info.png" className="h-[31rem] w-[31rem]" alt="image" />
+                <img src="/landing/info.png" className="h-[31rem] w-[31rem]" alt="image" loading="lazy"/>
             </div>
             <div className="col-span-2 md:col-span-1 p-6" data-aos="fade-left" data-aos-duration="2000">
                 <ul className="list-none">

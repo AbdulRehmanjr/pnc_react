@@ -6,7 +6,6 @@ const BecomeSeller = () => {
 
   return (
     <>
-
       <section className={`${style.bg} flex items-center`}>
         <div className="bg-white bg-opacity-30 backdrop-blur-lg mx-5 md:mx-20 p-4 md:p-5 rounded-lg">
           <p className="text-white text-lg md:text-4xl font-serif font-bold">It's free to be on Business365</p>
