@@ -1,10 +1,11 @@
 
 export const Environment = {
-    baseUrl:'http://192.168.100.21:3000/api',
+    baseUrl:'http://localhost:3000/api',
     user:'user',
     login:'login',
     category:'category',
     product:'product',
     cart:'cart',
-    sellerRequest:'request'
+    sellerRequest:'request',
+    chatlist:'chatlist'
 } as const

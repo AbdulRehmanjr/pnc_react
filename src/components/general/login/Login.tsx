@@ -30,15 +30,18 @@ function Login() {
   const onSubmit = (data: FieldValues) => {
     loginUser(data)
       .then((response: Response) => {
+        console.log(response)
         setToken(response['data'])
       })
       .catch(error => console.error(error))
       .finally(
         () =>
           currentUserInfo()
-            .then((response: Response) => localStorage.setItem('user', JSON.stringify(response['data'])))
+            .then((response: Response) => {
+              localStorage.setItem('user', JSON.stringify(response['data']))
+              naviate('/')
+            })
             .catch((error: Error) => console.log(error))
-            .finally(() => naviate('/'))
       )
   };
   return (
