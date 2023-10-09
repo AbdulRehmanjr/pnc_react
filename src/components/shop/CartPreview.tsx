@@ -1,7 +1,6 @@
 import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import { Product } from '../../class/inventory/Product'
 import { Cart } from '../../class/order/Cart'
 import { CartItem } from '../../class/order/CartItem'
 import { Link } from 'react-router-dom'

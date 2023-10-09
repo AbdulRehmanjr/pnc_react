@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prefer-const */
 
 import { useState, useEffect, useRef } from 'react';
@@ -16,8 +17,8 @@ const RequestTable = () => {
     const [requests, setRequests] = useState<SellerRequest[]>(null)
     const [dialog, setDialog] = useState(false);
     const [selectedRequests, setSelectedRequests] = useState(null);
-    const [request,setRequest] = useState<SellerRequest>()
-    const [submitted, setSubmitted] = useState(false);
+    const [_request,setRequest] = useState<SellerRequest>()
+    const [_submitted, setSubmitted] = useState(false);
     const [globalFilter, setGlobalFilter] = useState(null);
     const toast = useRef(null);
     const dt = useRef(null);

@@ -135,36 +135,4 @@ const HomePage = () => {
 }
 
 
-const extra = () => {
-    return (
-        <>
-            <div className={`col-span-7 md:col-span-3 grid grid-cols-3 bg-green-200  rounded-lg h-[210px]  shadow-lg shadow-[#F3F4F6] cursor-pointer`}>
-                <div className="col-span-2 text-gray-500 font-bold font-serif p-4">
-                    <p className="text-2xl md:text-3xl my-2">Seller Requests</p>
-                    <ul className="list-none text-md">
-                        <li className="py-1 px-2 text-green-600"><i className="fa-solid fa-circle-check px-2"></i>Accept</li>
-                        <li className="py-1 px-2 text-red-600"><i className="fa-solid fa-circle-xmark px-2"></i>Reject</li>
-                        <li className="py-1 px-2 text-yellow-600"><i className="fa-solid fa-arrow-rotate-left px-2"></i>Review</li>
-                        <li className="py-1 px-2 text-gray-800"><i className="fa-solid fa-hourglass-half px-2"></i>Pending</li>
-                    </ul>
-                </div>
-                <div className="col-span-1 text-[100px] pt-7 md:p-6 text-gray-500">
-                    <i className="fa-solid fa-envelope-open-text"></i>
-                </div>
-            </div>
-            <div className={`col-span-7 md:col-span-2 grid grid-cols-3 bg-green-200 rounded-lg h-[210px]  shadow-lg shadow-[#F3F4F6] cursor-pointer px-2`}>
-                <div className="col-span-2 text-gray-500 font-bold font-serif p-4">
-                    <p className="text-2xl my-2">Categories</p>
-                    <ul className="list-none text-md text-black">
-                        <li className="py-1 px-2 text-sm"><i className="fa-solid fa-house px-2"></i>Home Service</li>
-                        <li className="py-1 px-2 "><i className="fa-solid fa-utensils px-2"></i>Resturants</li>
-                        <li className="py-1 px-2 "><i className="fa-solid fa-car px-2"></i>Auto Mobile</li>
-                    </ul>
-                </div>
-                <div className="col-span-1 text-[100px] md:text-[65px] py-6 md:py-10  text-gray-500 drop-shadow-xl">
-                    <i className="fa-solid fa-shapes"></i>
-                </div>
-            </div></>
-    )
-}
 export default HomePage

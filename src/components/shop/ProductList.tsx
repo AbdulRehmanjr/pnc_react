@@ -2,7 +2,6 @@ import { Filter } from "./Filter"
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { Products } from "./Product"
-import InfiniteScroll from 'react-infinite-scroll-component'
 import { classNames } from "primereact/utils"
 import { useState, useEffect, Fragment } from "react"
 import { Product } from "../../class/inventory/Product"

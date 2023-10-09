@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { Fragment, useEffect, useState } from "react";
 
@@ -5,16 +6,6 @@ import { Link } from "react-router-dom";
 
 import { Badge } from 'primereact/badge';
 
-import {
-  ArrowPathIcon,
-  Bars3Icon,
-  ChartPieIcon,
-  CursorArrowRaysIcon,
-  FingerPrintIcon,
-  SquaresPlusIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline'
-import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import { CartPreview } from "../../shop/CartPreview";
 import { currentCount, setCartUpdateCallback } from "../../../services/order/CartService";
 import { Avatar } from "primereact/avatar";
@@ -25,7 +16,7 @@ function Header() {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isLogged, setIsLogged] = useState(false); // Replace with your login state
   const [count, setCount] = useState<number>(currentCount)
-  const [user,setUser] = useState(undefined)
+  const [_user,setUser] = useState(undefined)
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token)

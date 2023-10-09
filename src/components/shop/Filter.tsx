@@ -1,8 +1,7 @@
-
 import { Fragment, useState } from 'react'
-import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
+import { Dialog, Disclosure,  Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from '@heroicons/react/20/solid'
+import {  MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
 
 const subCategories = [
     { name: 'Totes', href: '#' },
@@ -49,16 +48,7 @@ const filters = [
     },
 ]
 
-const sortOptions = [
-    { name: 'Most Popular', href: '#', current: true },
-    { name: 'Best Rating', href: '#', current: false },
-    { name: 'Newest', href: '#', current: false },
-    { name: 'Price: Low to High', href: '#', current: false },
-    { name: 'Price: High to Low', href: '#', current: false },
-]
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-}
+
 export const Filter = () => {
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
 

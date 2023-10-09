@@ -1,11 +1,10 @@
-
 import { Product } from "../../class/inventory/Product";
 import { Cart } from "../../class/order/Cart";
 import { CartItem } from "../../class/order/CartItem";
-import { Environment } from "../../constants/environment";
+// import { Environment } from "../../constants/environment";
 
 
-const url: string = `${Environment.baseUrl}/${Environment.cart}`
+//const _url: string = `${Environment.baseUrl}/${Environment.cart}`
 
 //* get the cart from storage or make new one 
 export const getCart = (): Cart => {

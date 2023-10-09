@@ -7,22 +7,22 @@ function Categories() {
   const categories: Category[] = [
     {
       _id: '1',
-      categoryName: "AutoMobile",
+      name: "AutoMobile",
       picture: "/category/Automobile1.png",
     },
     {
       _id: '2',
-      categoryName: "Home Service",
+      name: "Home Service",
       picture: "/category/HomeServices1.png",
     },
     {
       _id: '3',
-      categoryName: "Resturant",
+      name: "Resturant",
       picture: "/category/Restaurant1.png",
     },
     {
       _id:'4',
-      categoryName:'Job',
+      name:'Job',
       picture:"/category/Automobile1.png"
     }
   ];
@@ -41,11 +41,11 @@ function Categories() {
                <img
                  className="h-[50px] w-[50px] m-auto"
                  src={category.picture}
-                 alt={category.categoryName}
+                 alt={category.name}
                  style={{ border: "none", borderRadius: "50%" }}
                />
                <br /> 
-               <p className={`${style.category_title}`}>{category.categoryName}</p>
+               <p className={`${style.category_title}`}>{category.name}</p>
              </div>
            </Link>
           ))}

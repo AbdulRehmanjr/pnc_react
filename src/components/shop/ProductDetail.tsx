@@ -29,14 +29,14 @@ export const ProductDetail = () => {
     const [moreProducts, setMoreProducts] = useState<Product[]>()
     const [first, setFirst] = useState(0);
     const [rows, setRows] = useState(3);
-    const [reviews,setReviews] =useState<any[]>()
+   const [reviews,_setReviews] =useState<[]>()
   
     const onPageChange = (event) => {
         setFirst(event.first);
         setRows(event.rows);
       };
     
-      const pagedReviews:Product[] = reviews?.slice(first, first + rows);
+      //const pagedReviews:Product[] = reviews?.slice(first, first + rows);
 
     const shipping: Item[] = [
         {
