@@ -7,5 +7,6 @@ export const Environment = {
     product:'product',
     cart:'cart',
     sellerRequest:'request',
-    chatlist:'chatlist'
+    chatlist:'chatlist',
+    message:'message'
 } as const

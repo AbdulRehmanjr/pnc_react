@@ -1,27 +1,30 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Avatar } from "primereact/avatar";
 import { useEffect, useRef, useState } from "react";
-import { FieldValues, useForm } from "react-hook-form";
+import { Controller, FieldValues, useForm } from "react-hook-form";
 import { getCurrentTimeInAMPM } from "../../../utils/Utils";
 import { Message } from "../../../class/communication/Message";
 import { Socket, io } from "socket.io-client";
 import { User } from "../../../class/user/User";
+import { getChatMessages } from "../../../services/communication/MessageService";
 
 
 
-export  const MessageContainer = ({selectedUser})=>{
+export const MessageContainer = ({ selectedUser }) => {
 
     const [messages, setMessages] = useState<Message[]>([])
-    const [user, setUser] = useState<User>(null)
     const [socket, setSocket] = useState<Socket>()
+    const { register, handleSubmit, reset, control } = useForm()
+    const [user, setUser] = useState<User>()
 
-    const {register,handleSubmit,reset} = useForm()
     const messageContainer = useRef<HTMLDivElement>()
-    
-    useEffect(()=>{
-        setUser(JSON.parse(localStorage.getItem('user')))
-    },[])
-    
+
+    useEffect(() => {
+        setUser(() => JSON.parse(localStorage.getItem('user')))
+        getChatMessages(JSON.parse(localStorage.getItem('user'))['_id'], selectedUser._id)
+            .then(response => setMessages(response['data']))
+            .catch(error => console.log(error))
+    }, [])
     useEffect(() => {
         if (selectedUser)
             socketConnection();
@@ -52,13 +55,13 @@ export  const MessageContainer = ({selectedUser})=>{
     useEffect(() => {
         scrollToBottom();
     }, [messages]);
-    
+
     const scrollToBottom = () => {
         if (messageContainer.current) {
             messageContainer.current.scrollTop = messageContainer.current.scrollHeight;
         }
     };
-    const sendMessage = (data:FieldValues) => {
+    const sendMessage = (data: FieldValues) => {
         if (data.message == '')
             return
 
@@ -67,14 +70,15 @@ export  const MessageContainer = ({selectedUser})=>{
         newMessage.receiverId = selectedUser._id
         newMessage.senderId = user._id
         newMessage.time = getCurrentTimeInAMPM()
-    
+
+
         socket?.emit('send_message', newMessage);
         setMessages(() => [...messages, newMessage])
-        
+
         reset()
     }
 
-    
+
     return (
         <>
             <div className=" flex flex-row bg-slate-100 rounded-lg h-10 m-2 p-1">
@@ -83,10 +87,10 @@ export  const MessageContainer = ({selectedUser})=>{
                     {selectedUser?.firstName + " " + selectedUser?.lastName}
                 </p>
             </div>
-            <div className="h-[24rem] overflow-x-hidden overflow-y-scroll"  style={{ scrollbarWidth: 'none' }} ref={messageContainer}>
+            <div className="h-[24rem] overflow-x-hidden overflow-y-scroll" style={{ scrollbarWidth: 'none' }} ref={messageContainer}>
                 {
-                    messages.map((message: Message) => (
-                        <div className={`flex ${message?.senderId != user?._id ? "flex-row" : "flex-row-reverse"}`} key={message?._id}>
+                    messages.map((message: Message, index: number) => (
+                        <div className={`flex ${message?.senderId != user?._id ? "flex-row" : "flex-row-reverse"}`} key={index}>
                             <Avatar className="m-2" image={user.profile} size="normal" shape="circle" />
                             <div className="m-2 rounded-lg">
                                 <p className={`text-white ${message?.senderId != user?._id ? "bg-blue-500" : "bg-green-600"} text-sm font-bold font-mono max-w-sm   rounded-lg p-2`}>
@@ -100,20 +104,32 @@ export  const MessageContainer = ({selectedUser})=>{
                 }
             </div>
             <div className="flex flex-row  bg-white rounded-lg m-2">
-                    <textarea {...register('message')} name="message" id="message" placeholder="Type Message" className=" p-2 rounded-lg w-full" cols={30} rows={1}
-                    onKeyDown={(e) => {
-                        if (e.key === 'Enter') {
-                            e.preventDefault()
-                           handleSubmit(sendMessage)()
-                        }
-                    }}
-                    autoFocus={true}
-                    >
-                    </textarea>
-                    <button className="p-2 m-2" onClick={() => handleSubmit(sendMessage)()}>
-                        <i className="fas fa-paper-plane"></i>
-                    </button>
-                </div>   
+                <Controller
+                    name="message"
+                    control={control}
+                    defaultValue=""
+                    render={({ field }) => (
+                        <textarea
+                            {...field}
+                            placeholder="Type Message"
+                            className="p-2 rounded-lg w-full"
+                            cols={30}
+                            rows={1}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter') {
+                                    e.preventDefault();
+                                    handleSubmit(sendMessage)();
+                                }
+                            }}
+                            autoFocus={true}
+                        />
+                    )}
+                />
+            
+            <button className="p-2 m-2" onClick={() => handleSubmit(sendMessage)()}>
+                <i className="fas fa-paper-plane"></i>
+            </button>
+        </div >
         </>
     )
 }

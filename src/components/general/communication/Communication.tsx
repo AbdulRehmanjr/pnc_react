@@ -11,7 +11,7 @@ export const Communication = () => {
 
     const [chatList, setChatList] = useState<ChatList>()
     const [selectedUser, setSelectedUser] = useState<User>(null)
-
+    
     useEffect(() => {
         
         getChatListById(JSON.parse(localStorage.getItem('user'))['_id'])

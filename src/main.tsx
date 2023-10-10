@@ -7,7 +7,6 @@ import '@fortawesome/fontawesome-free/css/all.css';
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import './index.css'
-import './fonts/fonts.css'
 
 import { PrimeReactProvider } from "primereact/api";
 import Tailwind from "primereact/passthrough/tailwind";
